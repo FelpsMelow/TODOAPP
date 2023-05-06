@@ -1,0 +1,5 @@
+Random user generator: Usada para gerar usuários fictícios
+Invertexto - Usaso para criação e gerenciamento de E-Mails temporarios
+API do WhatsApp Business da Twilio - Usado para enviar e receber mensagens no WhatsApp
+Dummyjson: Usado para pegar produtos e suas informações
+.

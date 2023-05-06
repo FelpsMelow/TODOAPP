@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style_dash.css">
+    <title>Dasboard operacional</title>
+</head>
+<body>
+    <Div class="main-dash">
+        <div class="left-content">
+            <div class="container-img">
+                <img src="https://i.ibb.co/kK5G9Bk/logo-cbn.png" class="logo-cbn" alt="logo-cbn">
+            </div>
+            <div class="menu-bar">
+                <h1>Filtros avançados</h1>
+            </div>
+        </div>
+        <div class="rigth-content">
+            <div class="rigth-cards-bar">
+                <div class="card-01">
+                    <h1>Cartão - 01</h1>
+                </div>
+                <div class="card-02">
+                    <h1>Cartão - 02</h1>
+                </div>
+                <div class="card-03">
+                    <h1>Cartão - 03</h1>
+                </div>
+            </div>
+            <div class="graphics-area">
+                <div class="container-graphics-1">
+                    <div class="grafico-01">
+                        <h1>Grafico 01</h1>
+                    </div>
+                    <div class="grafico-02">
+                        <h1>Grafico 02</h1>
+                    </div>
+                </div>
+                <div class="container-graphics-2">
+                    <div class="grafico-03">
+                        <h1>Grafico 03</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Div>
+</body>
+</html>
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+body {
+    margin: 0;
+}
+
+body * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main-dash {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.left-content {
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+.rigth-content {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.rigth-cards-bar {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
+    background-color: #ffffff;
+}
+
+.card-01 {
+    width: 33%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background-color: #094c9a;
+}
+
+.card-02 {
+    width: 33%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background-color: #094c9a;
+}
+
+.card-03 {
+    width: 33%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background-color: #094c9a;
+}
+
+.graphics-area {
+    width: 100%;
+    height: 80%;
+}
+
+.container-graphics-1 {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #789cc56b;
+}
+
+.container-graphics-2 {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #3223b9;
+}
+
+.menu-bar {
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    background-color: #ecab31f5;
+}
+
+.menu-bar > h1 {
+    color: #094c9a;
+    text-decoration: underline white;
+    text-align: center;
+}
+
+.container-img {
+    width: 100%;
+    height: 10%;
+}
+
+.logo-cbn {
+    width: 100%;
+}
+
+
