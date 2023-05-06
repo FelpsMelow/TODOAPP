@@ -1,0 +1,3 @@
+Figma -     Usado para ver os layouts importados do SketchApp
+SketchApp - Usado para pegar arquivos UI/UX prontos para desenvolvimento
+Storyset -  Usado para criar animações

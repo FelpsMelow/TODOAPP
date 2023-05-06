@@ -1,0 +1,148 @@
+ /* Estilos básicos para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o formulário */
+form {
+    width: 60%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background-color: #13315e;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #17407e;
+}
+
+form h1, p {
+    color: white;
+}
+
+/* Estilos para os campos de entrada */
+label {
+    width: 100%;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input[type="email"]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para o botão de enviar */
+button[type="submit"] {
+    width: 100%;
+    padding: 16px 0px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background-color: #F35F00;
+    cursor: pointer;
+    box-shadow: 0px 10px 20px -12px #854e07be;
+}
+
+button[type="submit"]:hover {
+    background-color: #f35d008a;
+}
+
+/* Estilos para a mensagem de erro */
+.error {
+    color: red;
+    margin-bottom: 20px;
+}
+
+/* Estilos para a mensagem de sucesso */
+.success {
+    color: green;
+    margin-bottom: 20px;
+}
+
+.main-redefinir{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, #000428e1, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-container {
+    width: 50vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;    /*Faz referência ao eixo X*/
+    align-items: center;        /*Fas referência ao eixo Y*/
+    flex-direction: column;     /*Como foi usado o displey: flex, para forçarmos o alinhamento em coluna, colocamos o seguinte comando*/
+}
+
+.left-container > h1 {
+    font-size: 2rem;
+    color: #F35F00;
+}
+
+
+.left-container-img {
+    width: 32vw;
+    border: none;
+}
+
+.right-container {
+    width: 50vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.img-alerta {
+    height: 30px;
+    margin-right: 15px;
+}
+
+.msg-alertas{ 
+    width:350px;
+} 
+
+.ms{ 
+    width: 350px; 
+    margin:auto;  
+    padding:1em; 
+    float:left; 
+    display:block; 
+    margin-bottom:10px;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-weight:100; 
+    font-size:16px;
+    z-index: 2;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    opacity: 0.8    ;
+}
+    
+.erro   { 
+    background-color:#FFCACA;
+    border: none;
+    color:#a60202; 
+    border-radius:10px;
+    display: flex;
+    align-items: center;
+}
+.ok     { background-color:#A6FFBC; border:2px #00bd00 solid; color:#00bd00; border-radius:5px; }

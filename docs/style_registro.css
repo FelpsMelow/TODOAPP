@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;1,100;1,200&display=swap');
+
+body {
+    margin: 0;
+    overflow: hidden; /*usado para esconder as barras rolagem*/
+}
+
+body * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-login{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, #000428e1, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login {
+    width: 50vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;    /*Faz referência ao eixo X*/
+    align-items: center;        /*Fas referência ao eixo Y*/
+    flex-direction: column;     /*Como foi usado o displey: flex, para forçarmos o alinhamento em coluna, colocamos o seguinte comando*/
+}
+
+.left-login > h1 {
+    font-size: 2rem;
+    color: #F35F00;
+}
+
+
+.left-login-img {
+    width: 32vw;
+    border: none;
+}
+
+.right-login {
+    width: 50vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 60%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background-color: #13315e;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #17407e;
+}
+
+.card-login > h1 {
+    color: #ffffff;
+    margin: 0;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+    margin-bottom: 20px;
+}
+
+.textfield > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #e7dcd55e;
+    color: #090909de;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #02032083;
+    outline: none;
+    box-sizing: border-box;     /*Usado para evitar a ultrapassagen de elementos pelo padding*/
+}
+
+.textfield > label {
+    color: #f0ffffde;
+    margin-bottom: 3px;
+}
+
+.textfield > input::placeholder { /*colorindo texto de dentro do input*/
+    color: #f0ffff;
+}
+
+.container-termos > p {
+    color: white;
+    line-height: 25px;
+}
+
+.container-termos > p > strong{
+    color: #ec7932;
+    line-height: 25px;
+}
+
+.submit-form-registro {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+
+.submit-form-registro > p {
+    color: white;
+    font-size: 1rem;
+    width: 45%;
+    text-align: center;
+}
+
+.btn-criar-conta {
+    width: 55%;
+    padding: 16px 0px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background-color: #F35F00;
+    cursor: pointer;
+    box-shadow: 0px 10px 20px -12px #854e07be;
+}
+
+.btn-esqueci-minha-senha {
+    color: white;
+    text-decoration: none;
+}
+
+.btn-cadastro-usuario {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.btn-cadastro-usuario, a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Estilo para telas menores que 768px */
+@media screen and (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+    
+    .main-login {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        flex-direction: column;
+    }
+        
+    .left-login {
+        display: none;
+    }
+
+    .right-login {
+        width: 100%;
+        height: 50%;
+    }
+    
+    .left-login-img {
+        display: none;
+    }
+    
+    .card-login {
+        width: 70%;
+    }
+}
