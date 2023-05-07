@@ -1,0 +1,242 @@
+body {
+    margin: 0;
+    overflow: hidden; /*usado para esconder as barras rolagem*/
+}
+
+
+body * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+
+.sidebar {
+    width: 20%;
+    height: 100vh;
+    border-right-style: solid;
+    border-width: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-color: #d8d1d17c;
+    padding-bottom: 10px;
+}
+
+.user-infos {
+    width: 100%;
+    height: 45%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.user-infos img {
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px -2px #a19c95;
+}
+
+.bi-user {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.data-card {
+    height: 70px;
+    width: 30%;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    border: solid;
+    border-color: #a19c9518;
+    border-width: 1px;
+
+    box-shadow: 0px 10px 20px -8px #a19c95be;
+}
+
+.data-card h1 {
+    color: #323536cc;
+}
+
+.data-card h6 {
+    color: #323536;
+    font-size: 15px;
+}
+
+.hr {
+    width: 100%;
+    height: 2px;
+    background-color: #d8d1d17c;
+}
+
+.categories {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 0px;
+    width: 100%;
+    height: 35%;
+    overflow-y: scroll;
+    color: #222324e5;
+}
+
+.categories h2 {
+    position: sticky;
+    top: 0;
+    background-color:white;
+}
+
+.categories-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.categories-list li {
+    height: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    color: #323536cc;
+}
+
+.categorie-color {
+    width: 40px;
+    height: 100%;
+    border-radius: 3px;
+    margin-right: 15px;
+    background-color: rgba(255, 121, 12, 0.877);
+    box-shadow: 0px 10px 20px -5px #a19c95cc;
+}
+
+
+/* tela do app */
+
+.app-screnn {
+    width: 80%;
+    height: 100vh;
+}
+
+.menu-bar {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-color: #d8d1d17c;
+}
+
+
+/* barra de menu do app */
+
+.list-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-buttons li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #222324e5;
+
+}
+
+.list-buttons li div {
+    width: 20px;
+}
+
+.container-list-buttons-filter {
+    width: 50%;
+}
+
+.list-buttons-filter {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.list-buttons-filter li button{
+    width: 100%;
+    height: 70%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    color: white;    
+    border: none;
+    cursor: pointer;
+    background-color: #6bb8f0;
+    box-shadow: 0px 10px 20px -7px #4e769293;
+
+}
+
+.list-buttons-filter li button:hover {
+    background-color: #0f619cb7;
+}
+
+
+/**Botões do roda pé*/
+
+.buttons-option {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttons-option img {
+    width: 12%;
+    cursor: pointer;
+}
+
+/* barra de rolagem */
+
+::-webkit-scrollbar-track {
+    background-color: #e2dfdfa2;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #a8a1a1;
+}

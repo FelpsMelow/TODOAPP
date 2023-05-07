@@ -143,6 +143,10 @@ body * {
     box-shadow: 0px 10px 20px -12px #854e07be;
 }
 
+.btn-criar-conta:hover {
+    background-color: #f35d008a;
+}
+
 .btn-esqueci-minha-senha {
     color: white;
     text-decoration: none;
@@ -157,6 +161,7 @@ body * {
     color: white;
     text-decoration: none;
 }
+
 
 
 /* Estilo para telas menores que 768px */

@@ -24,6 +24,9 @@ const btnLogin = document.querySelector(".btn-login")
 //Logando
 btnLogin.addEventListener("click", async () => {
 
+    const loader = document.querySelector(".loader-content")
+    loader.style.display =  "flex"
+
     let email = document.querySelector(".email").value
     let password = document.querySelector(".password").value
 
@@ -35,7 +38,9 @@ btnLogin.addEventListener("click", async () => {
         let user_log = userCredential.user;
         console.log(user_log)
 
-        window.location.href = "app.html"
+        loader.style.display =  "none"
+
+        window.location.href = "pages/app.html"
 
         //document.querySelector(".container-login").style.display =  "block"
         //document.querySelector(".login").style.display =  "none"
@@ -44,20 +49,29 @@ btnLogin.addEventListener("click", async () => {
         const errorCode = error.code;
         const errorMessage = error.message;
 
-        //console.log(errorCode)
+        console.log(errorCode)
+        console.log(errorMessage)
 
         //TO DO (Inter travamento nos spans)
 
         if (errorCode == "auth/invalid-email") {
             //console.log("Preencha todos os campos")
+            loader.style.display =  "none"
+
             document.querySelector(".warning").style.display =  "none"
             document.querySelector(".erro").style.display =  "flex"
 
         }
         if (errorCode == "auth/wrong-password") {
             //console.log("Email ou senha incorreto!")
+            loader.style.display =  "none"
+
             document.querySelector(".erro").style.display =  "none"
             document.querySelector(".warning").style.display =  "flex"
+        } if (errorCode == "auth/user-not-found") {
+
+            loader.style.display =  "none"
+            alert("Email não cadastrado")
         }
 
     });

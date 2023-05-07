@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style_registro.css">
+    <link rel="stylesheet" href="../assets/css//registro_page/style_registro.css">
+    <link rel="stylesheet" href="../assets/css//common/style_spinner.css">
+
     <title>Registro</title>
 </head>
 <body>
@@ -56,9 +58,15 @@
                     </p>           
                 </footer>
             </div>
-        </div>
-        
+        </div>        
     </div>
+    <div class="loader-content">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <span class="ms erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não cadastrado !</span>
+    <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Login inválido !</span>
+
     <script type="module" src="../assets/js/script_registro_module.js"></script>
 </body>
 </html>

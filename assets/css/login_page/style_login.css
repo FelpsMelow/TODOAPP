@@ -126,6 +126,10 @@ body * {
     box-shadow: 0px 10px 20px -12px #854e07be;
 }
 
+.btn-login:hover {
+    background-color: #f35d008a;
+}
+
 .btn-esqueci-minha-senha {
     color: white;
     text-decoration: none;
@@ -144,69 +148,6 @@ body * {
 .btn-cadastro-usuario > strong > a {
     color: #ec7932;
     text-decoration: none;
-}
-
-
-/*Estilo do popup de login inválido*/
-
-
-.img-alerta {
-    height: 30px;
-    margin-right: 15px;
-}
-
-.ms{ 
-    width: 350px; 
-    margin:auto;  
-    padding:1em; 
-    float:left; 
-    margin-bottom:10px;
-    font-family:Verdana, Arial, Helvetica, sans-serif; 
-    font-weight:100; 
-    font-size:16px;
-    z-index: 2;
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    opacity: 0.6;
-}
-    
-.erro   { 
-    background-color:#FFCACA;
-    border: none;
-    color:#a60202; 
-    border-radius:10px;
-    display: none;
-    align-items: center;
-}
-
-
-.img-warning {
-    height: 30px;
-    margin-right: 15px;
-}
-
-.warning   { 
-    background-color:#c7b18ae0;
-    border: none;
-    color:#080808; 
-    border-radius:10px;
-    display: none;
-    align-items: center;
-
-    width: 350px; 
-    margin:auto;  
-    padding:1em; 
-    float:left; 
-    margin-bottom:10px;
-    font-family:Verdana, Arial, Helvetica, sans-serif; 
-    font-weight:100; 
-    font-size:16px;
-    z-index: 2;
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    opacity: 0.6;
 }
 
 

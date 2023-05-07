@@ -1,6 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 import { getAuth, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
 
+import { doc, getDoc, getDocs, getFirestore, collection ,where, query } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyALQDf28nocTbr9e-QrzCX58xj64OdTIis",
@@ -16,37 +18,40 @@ const app = initializeApp(firebaseConfig);  // ------------------------------
 
 //Verificando status de login
 const auth = getAuth();
-onAuthStateChanged(auth, (user) => { //Validando se o usuário está logado oou não
+onAuthStateChanged(auth, async (user) => { //Validando se o usuário está logado oou não
     if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        console.log(user)
-        //alert("ainda esta logado")
-        //document.querySelector(".container-login").style.display =  "block"
-        //document.querySelector(".login").style.display =  "none"
-        // ...
-    } else {
-        //alert("Usuario não logado")
-        window.location.href = "index.html"
 
-        // User is signed out
-        // ...
+        const db = getFirestore(app) //Configurando o fire store
+
+        const colectionnn = collection(db, "User_info"); // Create a reference to the cities collection
+        const q = query(colectionnn, where("User_ID", "==", user.uid)); // Create a query against the collection.
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+
+            var User_info = doc.data()
+            const User_name = User_info.Nome
+
+            console.log(User_name)
+
+            const name_user = document.querySelector(".user-name")
+            name_user.innerHTML = User_name
+        });
+
+    } else {
+        window.location.href = "../index.html"
     }
 });
 
 
 //Encerrando login
 const btnLogout = document.querySelector(".btn-logout")
-
 btnLogout.addEventListener("click", ()=>{
     const auth = getAuth();
     signOut(auth).then(() => {
-        //document.querySelector(".container-login").style.display =  "none"
-        //document.querySelector(".login").style.display =  "block"
-        //ormLogin.reset()
-        //alert("Deslogado")
+
     }).catch((error) => {
         alert("Erro ao sair")
     });
+    
 })
