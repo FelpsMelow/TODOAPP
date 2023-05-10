@@ -4,7 +4,6 @@ import { getAuth, signOut, signInWithEmailAndPassword, onAuthStateChanged } from
 
 import { getFirestore, collection, addDoc, getDoc, doc, onSnapshot} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
 
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
 apiKey: "AIzaSyALQDf28nocTbr9e-QrzCX58xj64OdTIis",

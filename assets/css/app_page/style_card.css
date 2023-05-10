@@ -1,0 +1,93 @@
+.lista-tarefas {
+    width: 100%; /*Mudar com o click do botão ()nova tarefa > 70%*/  /*Corresponde aos 30% do container form*/
+    height: 100%; 
+    padding: 5px;
+    padding-right: 5; /*Mudar com o click do botão (nova tarefa) > 0px */
+    overflow-y: scroll;
+}
+
+.card-tarefa {
+    width: 100%;
+    height: 60px;  /*Mudar com o click do botão (expandir) > 150px*/
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: #73767746;
+}
+
+.container-resumo-tarefa {
+    width: 100%; /*Mudar com o click do botão para mostrar o forms de nova tarefa*/
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-deleta-tarefa {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.btn-deleta-tarefa img {
+    height: 80%;
+}
+
+.card-infos {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icones-img {
+    width: 130px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icones-img div {
+    height: 75%;
+    cursor: pointer;
+}
+
+.icones-img div img {
+    height: 100%;
+}
+
+.infos-tarefa {
+    margin-left: 15px;
+}
+
+.container-detalhes-tarefa {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    display: none;
+    flex-direction: row;
+    background-color: yellow;
+}
+
+.content-descricao-tarefa {
+    width: 60%;
+    height: 80px; /*-20px de padding*/
+    overflow-y: scroll;
+}
+
+.container-detalhes-tarefa p {
+    background-color: chartreuse;
+    width: 100%;
+}
+
+.detalhe-tarefa {
+    padding-left: 5px;
+    padding-right: 5px
+}
+

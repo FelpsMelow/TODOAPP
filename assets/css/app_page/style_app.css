@@ -138,6 +138,8 @@ body * {
 .app-screnn {
     width: 80%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-bar {
@@ -202,8 +204,8 @@ body * {
     color: white;    
     border: none;
     cursor: pointer;
-    background-color: #6bb8f0;
-    box-shadow: 0px 10px 20px -7px #4e769293;
+    background-color: #11476ed7;
+    box-shadow: 0px 8px 15px -8px #05253ab7;
 
 }
 
@@ -211,6 +213,21 @@ body * {
     background-color: #0f619cb7;
 }
 
+.container-list-e-forms {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+}
+
+.container-form-nova-tarefa {
+    width: 30%;  /*Corresponde aos 70% da lista de tarefas*/
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    /*display: none; alterar pelo click do botão*/
+}
 
 /**Botões do roda pé*/
 
@@ -227,6 +244,30 @@ body * {
     width: 12%;
     cursor: pointer;
 }
+
+
+.btn-nova-tarefa {
+    z-index: 2;
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    cursor: pointer;
+    width: 125px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    color: white;    
+    border: none;
+    cursor: pointer;
+    background-color: #11476ed7;
+    box-shadow: 0px 8px 15px -8px #05253ab7;
+}
+
+.btn-nova-tarefa:hover {
+    background-color: #0f619cb7;
+}
+
 
 /* barra de rolagem */
 
