@@ -39,7 +39,7 @@ btnLogin.addEventListener("click", async () => {
 
         loader.style.display =  "none"
 
-        window.location.href = "pages/app.html"
+        window.location.href = "app.html"
 
         //document.querySelector(".container-login").style.display =  "block"
         //document.querySelector(".login").style.display =  "none"

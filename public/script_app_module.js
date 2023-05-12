@@ -226,7 +226,7 @@ onAuthStateChanged(auth, async (user) => { //Validando se o usuário está logad
         initialize_events_listeners()
 
     } else {
-        window.location.href = "../index.html"
+        window.location.href = "index.html"
     }
 });
 
