@@ -103,7 +103,18 @@ body * {
 .categories h2 {
     position: sticky;
     top: 0;
+    height: 30px;
     background-color:white;
+
+    /*Estilo mudado por causa do botão*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-btn-mais-categorias { /*fazer a altura da imagem ficar com o tamanho dinamico*/
+    height: 25px;
 }
 
 .categories-list {
@@ -138,7 +149,7 @@ body * {
 .app-screnn {
     width: 80%;
     height: 100vh;
-    display: flex;
+    display: flex; /*Alterar para flex após a configuração da tela de usuário*/
     flex-direction: column;
 }
 
@@ -252,8 +263,8 @@ body * {
     bottom: 25px;
     left: 50%;
     cursor: pointer;
-    width: 125px;
-    height: 30px;
+    width: 140px;
+    height: 35px;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;

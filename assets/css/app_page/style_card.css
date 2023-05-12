@@ -72,7 +72,7 @@
     padding: 5px;
     display: none;
     flex-direction: row;
-    background-color: yellow;
+    background-color: rgba(166, 168, 164, 0.363);
 }
 
 .content-descricao-tarefa {
@@ -82,7 +82,6 @@
 }
 
 .container-detalhes-tarefa p {
-    background-color: chartreuse;
     width: 100%;
 }
 

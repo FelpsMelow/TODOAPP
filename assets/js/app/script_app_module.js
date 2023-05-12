@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
 
-import { doc, addDoc,  getDoc, getDocs, onSnapshot, getFirestore, deleteDoc, collection ,where, query } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
+import { doc, updateDoc, addDoc,  getDoc, getDocs, onSnapshot, getFirestore, deleteDoc, collection ,where, query } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -66,7 +66,6 @@ async function get_infos_app_tarefas (uid) {
 
         var tarefa = doc.data()
         console.log(tarefa)
-        console.log(doc)
 
         var card_user = `
             <div class="card-tarefa" id="card-tarefa-`+ i +`">
@@ -74,19 +73,25 @@ async function get_infos_app_tarefas (uid) {
                 <div class="container-resumo-tarefa">
                     <div class="card-infos">
                         <div class="icones-img">
-                            <div>
+
+                            <div class="editar-tarefa">
+                                <div class="index-btn-editar" style="display:none;">`+i+`</div>	
                                 <img src="../assets/imgs/app_page/card_buttons/edit.png" alt="Editar">
                             </div>
+
                             <div class="expandir-tarefa">
-                                <div class="index-btns" style="display:none;">`+i+`</div>	
+                                <div class="index-btn-expandir" style="display:none;">`+i+`</div>	
                                 <img src="../assets/imgs/app_page/card_buttons/expandir.png" alt="Expandir card">
                             </div>
-                            <div>
+
+                            <div class="concluir-tarefa">
+                                <div class="index-btn-concluir" style="display:none;">`+i+`</div>	
                                 <img src="../assets/imgs/app_page/card_buttons/check.png" alt="Concluir">	
                             </div>
+
                         </div>
                         <div class="infos-tarefa">
-                            <h3>`+ tarefa.Titulo + i +`</h3>
+                            <h3>`+ tarefa.Titulo + `</h3>
                             <h6>Tarefa agendada para o dia `+ tarefa.Data_planejada +`</h6>
                         </div>
                     </div>
@@ -119,25 +124,49 @@ async function get_infos_app_tarefas (uid) {
 
 function initialize_events_listeners () {
 
-    var expandir = document.querySelectorAll(".expandir-tarefa");
-    var deletar  = document.querySelectorAll(".btn-deleta-tarefa")
-    console.log('executado');
-    console.log(expandir.length);
-
     async function detar_card_by_id (card_id) {
         const db = getFirestore(app) //Configurando o fire store
         await deleteDoc(doc(db, "Tarefa", card_id));
     }
 
+    async function concluir_card_by_id (card_id) { //Melhorar a interface do usuário
+
+        const db = getFirestore(app) //Configurando o fire store
+        const doc_referencia = doc(db, "Tarefa", card_id);
+
+        var dataAtual = new Date();
+        var dia = dataAtual.getDate();
+        var mes = dataAtual.getMonth() + 1;
+        var ano = dataAtual.getFullYear()
+
+        if (mes < 10 ) { //Formatando o valor do mês
+            mes = "0" + mes
+        }
+
+        var data_completa = (dia + "/" + mes + "/" + ano)
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(doc_referencia, {
+            Data_fim: data_completa
+        });
+
+        alert("Tarefa concluida")
+    }
+
+    async function editar_card_by_id (card_id) {
+        //Função para edição do card aqui
+    }
+    
+    var expandir = document.querySelectorAll(".expandir-tarefa");
     for (var i = 0; i < expandir.length; i++) {
+        
         expandir[i].addEventListener('click', function(t) {
-
-            var index_btn = t.currentTarget.querySelector('.index-btns').innerHTML;
-            console.log(index_btn)
-
-            const card_detalhe = document.getElementById('container-detalhes-tarefa-'+ index_btn);
-            const card_tarefa =  document.getElementById('card-tarefa-'+ index_btn);
-
+            
+            var index_btn_expandir = t.currentTarget.querySelector('.index-btn-expandir').innerHTML;
+            
+            const card_detalhe = document.getElementById('container-detalhes-tarefa-'+ index_btn_expandir);
+            const card_tarefa =  document.getElementById('card-tarefa-'+ index_btn_expandir);
+            
             if(card_detalhe.style.display == 'none') {
                 card_detalhe.style.display =  "flex";
                 card_tarefa.style.height = "150px"
@@ -145,19 +174,44 @@ function initialize_events_listeners () {
                 card_detalhe.style.display =  "none";
                 card_tarefa.style.height = "60px"
             }
-
+            
         })
     }
+    
+    var deletar  = document.querySelectorAll(".btn-deleta-tarefa");
+    for (var j = 0; j < deletar.length; j++) { //Escuta para o botão de excluir o card
 
-    for (var i = 0; i < deletar.length; i++) { //Escuta para o botão de excluir o card
+        deletar[j].addEventListener('click', async function(t) {
 
-        deletar[i].addEventListener('click', async function(t) {
-
-            var index_btn = t.currentTarget.querySelector('.index-btn-deletar').innerHTML;
-            const card_id = document.getElementById('card-tarefa-id-'+ index_btn).innerHTML;
+            var index_btn_deletar = t.currentTarget.querySelector('.index-btn-deletar').innerHTML;
+            const card_id = document.getElementById('card-tarefa-id-'+ index_btn_deletar).innerHTML;
             await detar_card_by_id(card_id)
         })
     }
+
+    var concluir = document.querySelectorAll(".concluir-tarefa");
+    console.log("index concluir " + concluir.length);
+    for (var k = 0; k < concluir.length; k++) { //Escuta para o botão de excluir o card
+
+        concluir[k].addEventListener('click', async function(t) {
+            var index_btn_concluir = t.currentTarget.querySelector('.index-btn-concluir').innerHTML;
+            const card_id = document.getElementById('card-tarefa-id-'+ index_btn_concluir).innerHTML;
+            console.log(card_id)
+            concluir_card_by_id(card_id)
+        })
+    }
+
+    var editar = document.querySelectorAll(".editar-tarefa");
+    console.log("index editar " + editar.length);
+    for (var l = 0; l < editar.length; l++) { //Escuta para o botão de excluir o card
+
+        editar[l].addEventListener('click', async function(t) {
+            var index_btn_editar = t.currentTarget.querySelector('.index-btn-editar').innerHTML;
+            const card_id = document.getElementById('card-tarefa-id-'+ index_btn_editar).innerHTML;
+            console.log(card_id)
+        })
+    }
+
 }
       
 //Verificando status de login e realizando o carregamento das informações do app
@@ -180,18 +234,19 @@ onAuthStateChanged(auth, async (user) => { //Validando se o usuário está logad
 async function show_tarefa_forms () {
 
     const container_form_nova_tarefa = document.querySelector(".container-form-nova-tarefa")
-    const lista_tarefas = document.querySelector(".lista-tarefas")
+    const btn_nova_tarefa_2 = document.querySelector(".btn-nova-tarefa")
 
 
     if(container_form_nova_tarefa.style.display == 'none') {
         container_form_nova_tarefa.style.display =  "flex";
-        lista_tarefas.style.height = "70%"
+        btn_nova_tarefa_2.innerHTML =  "FECHAR FORMS";
     }else {
         container_form_nova_tarefa.style.display =  "none";
-        lista_tarefas.style.height = "100%"
+        btn_nova_tarefa_2.innerHTML =  "NOVA TAREFA";
 
     }  
 }
+
 const btn_nova_tarefa = document.querySelector(".btn-nova-tarefa")
 btn_nova_tarefa.addEventListener("click", async () => {
     await show_tarefa_forms()
@@ -199,8 +254,10 @@ btn_nova_tarefa.addEventListener("click", async () => {
     initialize_events_listeners()
 })
 
-const btn_cadastrar_tarefa = document.querySelector(".btn-cadastrar-tarefa")
-btn_cadastrar_tarefa.addEventListener("click", async () => {
+async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada) {
+
+    console.log(titulo, prioridade, desc, data_planejada)
+
     const auth = getAuth();
     const user = auth.currentUser;
 
@@ -217,10 +274,10 @@ btn_cadastrar_tarefa.addEventListener("click", async () => {
                 Cor: "#W4WFAD16DA",
                 Data_fim: "",
                 Data_inicio: "09/05/2023",
-                Data_planejada: "18/05/2023",
-                Descricao: "O texto da minha descriçã aqui.",
-                Prioridade: "ALta, Média, Baixa",
-                Titulo: "Configurar interface do usuário",
+                Data_planejada: data_planejada,
+                Descricao: desc,
+                Prioridade: prioridade,
+                Titulo: titulo,
                 User_ID: uid
             });
 
@@ -232,9 +289,21 @@ btn_cadastrar_tarefa.addEventListener("click", async () => {
             console.error("Error adding document: ", e);
         }
     }
+}
+
+const btn_cadastrar_tarefa = document.querySelector(".btn-cadastrar-tarefa")
+btn_cadastrar_tarefa.addEventListener("click", () => {
+
+    var my_titulo = document.getElementById("titulo").value
+    var my_prioridade = document.getElementById("prioridade").value
+    var my_desc = document.getElementById("descricao").value
+    var my_data_planejada = document.getElementById("data_planejada").value
+
+    cadastrar_tarefa(my_titulo, my_prioridade, my_desc, my_data_planejada)
 })
 
-const db = getFirestore(app) //Configurando o fire store
+//Monitorando alterações no banco de dados
+const db = getFirestore(app)
 onSnapshot(collection(db, "Tarefa"), async () => {
     console.log("Alteração detectada");
     await get_infos_app_tarefas(cuurrent_user_app()) //Tem que esperar os elementos do app carregarem para rodar o add event listenner
@@ -253,3 +322,12 @@ btnLogout.addEventListener("click", ()=>{
     });
     
 })
+
+
+
+
+
+
+
+//Tela para a configuração do usuário
+

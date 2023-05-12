@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/common/style_spinner.css">
 	<link rel="stylesheet" href="../assets/css/app_page/style_form_nova_tarefa.css">
 	<link rel="stylesheet" href="../assets/css/app_page/style_card.css	">
+	<link rel="stylesheet" href="../assets/css/app_page/style_user_screnn.css">
 	<title>To do app</title>
 </head>
 <body>
@@ -33,7 +34,9 @@
 			</div>
 			<div class="hr"></div>
 			<div class="categories">
-				<h2>Categorias</h2>
+				<h2>Categorias
+					<img src="../assets/imgs/app_page/btn_mais_categoria.png" alt="" class="img-btn-mais-categorias">
+				</h2>
 				<ul class="categories-list">
 					<li>
 						<div class="categorie-color"></div>
@@ -107,77 +110,62 @@
 			</div>
 			<div class="container-list-e-forms">
 				<div class="lista-tarefas">
-					<div class="card-tarefa">
-						<div class="container-resumo-tarefa">
-							<div class="card-infos">
-								<div class="icones-img">
-									<div>
-										<img src="../assets/imgs/app_page/card_buttons/edit.png" alt="Editar">
-									</div>
-									<div class="expandir-tarefa">
-										<img src="../assets/imgs/app_page/card_buttons/expandir.png" alt="Expandir card">
-									</div>
-									<div>
-										<img src="../assets/imgs/app_page/card_buttons/check.png" alt="Concluir">	
-									</div>
-								</div>
-								<div class="infos-tarefa">
-									<h3>Titulo da minha tarefa</h3>
-									<h6>Tarefa agendada para o dia 09/05/2023</h6>
-								</div>
-							</div>
-							<img src="../assets/imgs/app_page/card_buttons/delete.png" alt="">
-						</div>
-						<div class="container-detalhes-tarefa">
-							<div class="content-descricao-tarefa">
-								<p>
-									Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta dolores debitis 
-									commodi minima provident praesentium ducimus repellat nisi quas tempora dolorum
-									laudantium corrupti at cupiditate, quam animi quibusdam ipsa? Eligendi?
-									praesentium ducimus repellat nisi quas tempora dolorum
-									laudantium corrupti at cupiditate, quam animi quibusdam ipsa? Eligendi?
-								</p>
-							</div>
-							<div class="detalhe-tarefa ">
-								<div>Categoria: Faculdade</div>
-								<div>Prioridade: Alta</div>
-								<div>Status: Completo</div>
-								<div>Data fim: 09/05/2023</div>
-							</div>
-						</div>
-					</div>
 					
 				</div>
 				<div class="container-form-nova-tarefa" style="display: none">
 					<form>
-						<label for="titulo">Título:</label>
-						<input type="text" id="titulo" name="titulo" placeholder="Digite o título..." required>
+
+						<div>
+							<label for="titulo">Título:</label>
+							<input type="text" id="titulo" name="titulo" placeholder="Digite o título..." required>
+						</div>
 					
-						<label for="cor">Cor:</label>
-						<input type="color" id="cor" name="cor" required>
+						<div>
+							<label for="cor">Cor:</label>
+							<input type="color" id="cor" name="cor" required>
+						</div>
 					
-						<label for="prioridade">Prioridade:</label>
-						<select id="prioridade" name="prioridade" required>
-							<option value="">Selecione...</option>
-							<option value="alta">Alta</option>
-							<option value="media">Média</option>
-							<option value="baixa">Baixa</option>
-						</select>
+						<div>
+							<label for="prioridade">Prioridade:</label>
+							<select id="prioridade" name="prioridade" required>
+								<option value="">Selecione...</option>
+								<option value="alta">Alta</option>
+								<option value="media">Média</option>
+								<option value="baixa">Baixa</option>
+							</select>
+						</div>
+
+						<div>
+							<label for="descricao">Descrição:</label>
+							<textarea id="descricao" name="descricao" placeholder="Digite a descrição..." required></textarea>
+						</div>
+						
+						<div style="display: flex; flex-direction: column;" >
+							<label for="data_planejada">Data planejada:</label>
+							<input type="date" id="data_planejada" name="data_planejada" required>
+						</div>
 					
-						<label for="descricao">Descrição:</label>
-						<textarea id="descricao" name="descricao" placeholder="Digite a descrição..." required></textarea>
-					
-						<label for="data_planejada">Data planejada:</label>
-						<input type="date" id="data_planejada" name="data_planejada" required>
-					
-						<label for="categoria">Categoria:</label>
-						<input type="text" id="categoria" name="categoria" placeholder="Digite a categoria..." required>
-					
+						<div>
+							<label for="categoria">Categoria:</label>
+							<select id="prioridade" name="prioridade" required>
+								<option value="">Selecione...</option>
+								<option value="alta">Trabalho</option>
+								<option value="media">Faculdade</option>
+								<option value="baixa">Lazer</option>
+								<option value="alta">Trabalho</option>
+								<option value="media">Faculdade</option>
+								<option value="baixa">Lazer</option>
+							</select>	
+						</div>
+
 						<input type="button" value="Enviar" class="btn-cadastrar-tarefa">
 					</form>
 				</div>
 			</div>
 			<button class="btn-nova-tarefa">NOVA TAREFA</button>
+		</div>
+		<div class="app-screnn-user">
+			Configuração do usuário aqui
 		</div>
 	</div>
     <div class="loader-content">
