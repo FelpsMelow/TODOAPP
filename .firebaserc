@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "todolist-5e335"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
