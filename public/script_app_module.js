@@ -76,17 +76,17 @@ async function get_infos_app_tarefas (uid) {
 
                             <div class="editar-tarefa">
                                 <div class="index-btn-editar" style="display:none;">`+i+`</div>	
-                                <img src="../assets/imgs/app_page/card_buttons/edit.png" alt="Editar">
+                                <img src="edit.png" alt="Editar">
                             </div>
 
                             <div class="expandir-tarefa">
                                 <div class="index-btn-expandir" style="display:none;">`+i+`</div>	
-                                <img src="../assets/imgs/app_page/card_buttons/expandir.png" alt="Expandir card">
+                                <img src="expandir.png" alt="Expandir card">
                             </div>
 
                             <div class="concluir-tarefa">
                                 <div class="index-btn-concluir" style="display:none;">`+i+`</div>	
-                                <img src="../assets/imgs/app_page/card_buttons/check.png" alt="Concluir">	
+                                <img src="check.png" alt="Concluir">	
                             </div>
 
                         </div>
@@ -97,7 +97,7 @@ async function get_infos_app_tarefas (uid) {
                     </div>
                     <div class="btn-deleta-tarefa">
                         <div class="index-btn-deletar" style="display:none;">`+ i +`</div>
-                        <img src="../assets/imgs/app_page/card_buttons/delete.png" alt="">
+                        <img src="delete.png" alt="botão de deletar">
                     </div>
                 </div>
                 <div class="container-detalhes-tarefa" id="container-detalhes-tarefa-`+ i +`" style="display: none">
