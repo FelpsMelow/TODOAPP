@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/app_page/style_app.css">
+    <link rel="stylesheet" href="../assets/css/common/style_spinner.css">
+	<link rel="stylesheet" href="../assets/css/app_page/style_form_nova_tarefa.css">
+	<link rel="stylesheet" href="../assets/css/app_page/style_card.css	">
+	<link rel="stylesheet" href="../assets/css/app_page/style_user_screnn.css">
+	<title>To do app</title>
+</head>
+<body>
+	<div class="container-app">
+		<div class="sidebar">
+			<div class="user-infos">
+				<img src="../assets/imgs/foto de perfil.jpg" alt="">
+				<h2 class="user-name"></h2>
+				<div class="bi-user">
+					<div class="data-card">
+						<h1>4</h1>
+						<h6>To do</h6>
+					</div>
+					<div class="data-card">
+						<h1>1</h1>
+						<h6>Feito</h6>
+					</div>
+					<div class="data-card">
+						<h1>0</h1>
+						<h6>Abertas</h6>
+					</div>
+				</div>
+			</div>
+			<div class="hr"></div>
+			<div class="categories">
+				<h2>Categorias
+					<img src="../assets/imgs/app_page/btn_mais_categoria.png" alt="" class="img-btn-mais-categorias">
+				</h2>
+				<ul class="categories-list">
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Trabalho</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Faculdade</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Lazer</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Treino</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Work</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Work</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Work</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Work</strong>
+					</li>
+					<li>
+						<div class="categorie-color"></div>
+						<strong>Work</strong>
+					</li>
+				</ul>
+			</div>
+			<div class="hr"></div>
+			<footer class="buttons-option">
+				<img src="../assets/imgs/app_page/user.png" alt="imagem do usuário" class="btn-user">
+				<img src="../assets/imgs/app_page/logout.png" alt="imagem do logout" class="btn-logout">
+				<img src="../assets/imgs/app_page/btn.png" alt="img dark mode" class="btn-dark-mode">
+			</footer>
+		</div>
+		<div class="app-screnn">
+			<div class="menu-bar">
+				<ul class="list-buttons">
+					<li>
+						<div class="categorie-color"></div>
+						<h2><strong>Work</strong></h2>
+					</li>
+					<li class="container-list-buttons-filter">
+						<ul class="list-buttons-filter">
+							<li>
+								<button>Todos</button>
+							</li>
+							<li>
+								<button>Incompletos</button>
+							</li>
+							<li>
+								<button>Feitos</button>
+							</li>
+							<li>
+								<button>Prioritários</button>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="container-list-e-forms">
+				<div class="lista-tarefas">
+					
+				</div>
+				<div class="container-form-nova-tarefa" style="display: none">
+					<form>
+
+						<div>
+							<label for="titulo">Título:</label>
+							<input type="text" id="titulo" name="titulo" placeholder="Digite o título..." required>
+						</div>
+					
+						<div>
+							<label for="cor">Cor:</label>
+							<input type="color" id="cor" name="cor" required>
+						</div>
+					
+						<div>
+							<label for="prioridade">Prioridade:</label>
+							<select id="prioridade" name="prioridade" required>
+								<option value="">Selecione...</option>
+								<option value="alta">Alta</option>
+								<option value="media">Média</option>
+								<option value="baixa">Baixa</option>
+							</select>
+						</div>
+
+						<div>
+							<label for="descricao">Descrição:</label>
+							<textarea id="descricao" name="descricao" placeholder="Digite a descrição..." required></textarea>
+						</div>
+						
+						<div style="display: flex; flex-direction: column;" >
+							<label for="data_planejada">Data planejada:</label>
+							<input type="date" id="data_planejada" name="data_planejada" required>
+						</div>
+					
+						<div>
+							<label for="categoria">Categoria:</label>
+							<select id="prioridade" name="prioridade" required>
+								<option value="">Selecione...</option>
+								<option value="alta">Trabalho</option>
+								<option value="media">Faculdade</option>
+								<option value="baixa">Lazer</option>
+								<option value="alta">Trabalho</option>
+								<option value="media">Faculdade</option>
+								<option value="baixa">Lazer</option>
+							</select>	
+						</div>
+
+						<input type="button" value="Enviar" class="btn-cadastrar-tarefa">
+					</form>
+				</div>
+			</div>
+			<button class="btn-nova-tarefa">NOVA TAREFA</button>
+		</div>
+		<div class="app-screnn-user">
+			Configuração do usuário aqui
+		</div>
+	</div>
+    <div class="loader-content">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+	<script type="module" src="../assets/js/app/script_app_module.js"></script>
+</body>
+</html>
