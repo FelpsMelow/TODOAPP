@@ -75,17 +75,17 @@ async function get_infos_app_tarefas (uid) {
                         <div class="icones-img">
 
                             <div class="editar-tarefa">
-                                <div class="index-btn-editar" style="display:none;">`+i+`</div>	
+                                <div class="index-btn-editar" style="display:none;">`+ i +`</div>	
                                 <img src="edit.png" alt="Editar">
                             </div>
 
                             <div class="expandir-tarefa">
-                                <div class="index-btn-expandir" style="display:none;">`+i+`</div>	
+                                <div class="index-btn-expandir" style="display:none;">`+ i +`</div>	
                                 <img src="expandir.png" alt="Expandir card">
                             </div>
 
                             <div class="concluir-tarefa">
-                                <div class="index-btn-concluir" style="display:none;">`+i+`</div>	
+                                <div class="index-btn-concluir" style="display:none;">`+ i +`</div>	
                                 <img src="check.png" alt="Concluir">	
                             </div>
 
