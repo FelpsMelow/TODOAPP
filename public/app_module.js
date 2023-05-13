@@ -52,27 +52,21 @@ function cuurrent_user_app () {
 //Carregar as informações do usuário
 //Carregar as minhas categorias
 
-async function get_infos_app_tarefas (uid) { //Rodar função de acordo com cada tipo de filtro ou carregamento
+async function get_infos_app_tarefas (uid, type, order, categoria) { //Rodar função de acordo com cada tipo de filtro ou carregamento
+
+    //parametros aceitos pela função:
+    //type > "init" e "search"
+    //para init, só é aceito exe
+    //para search, são aceitos "todos", "incompletos", "feitos" e "prioritarios"
 
     const db = getFirestore(app) //Configurando o fire store
 
-    const colectionnn = collection(db, "Tarefa"); // Create a reference to the cities collection
-    const q = query(colectionnn, where("User_ID", "==", uid)); // Create a query against the collection.
-    const querySnapshot = await getDocs(q);
+    const lista_tarefas = document.querySelector(".lista-tarefas")  //Referenciando o objeto "lista de tarefas"
 
-    var i = 0
-
-    const lista_tarefas = document.querySelector(".lista-tarefas")
-    lista_tarefas.innerHTML = ""
-
-    querySnapshot.forEach((doc) => {
-
-        var tarefa = doc.data()
-        console.log(tarefa)
-
-        var card_user = `
+    function renderizar_elemento (i, tarefa ,doc_id) {
+        return `
             <div class="card-tarefa" id="card-tarefa-`+ i +`">
-                <div id="card-tarefa-id-`+ i +`" style="display: none;">`+ doc.id +`</div>
+                <div id="card-tarefa-id-`+ i +`" style="display: none;">`+ doc_id +`</div>
                 <div class="container-resumo-tarefa">
                     <div class="card-infos">
                         <div class="icones-img">
@@ -118,15 +112,186 @@ async function get_infos_app_tarefas (uid) { //Rodar função de acordo com cada
                 </div>
             </div>
         `
-        lista_tarefas.innerHTML += card_user
+    }
 
-        i = i + 1
+    async function carregar_todos_os_cards () {
+        const colectionnn = collection(db, "Tarefa"); // Create a reference to the cities collection
+        const q = query(colectionnn, where("User_ID", "==", uid)); // Create a query against the collection.
+        const querySnapshot = await getDocs(q);
 
-    });
+        var i = 0   //iniciando o contador
+        lista_tarefas.innerHTML = ""    //Limpando a lista de tarefas
+
+        querySnapshot.forEach((doc) => {
+
+            var tarefa = doc.data()
+            var card_user = renderizar_elemento(i, tarefa, doc.id)
+
+            lista_tarefas.innerHTML += card_user
+    
+            i = i + 1
+    
+        });
+    }
+
+    if (type == "init" && order == "exe") {
+        await carregar_todos_os_cards()
+    } else if (type == "search" && order == "todos") {
+        await carregar_todos_os_cards()
+    } else if (type == "search" && order == "incompletos") {
+
+        const colectionnn = collection(db, "Tarefa"); // Create a reference to the cities collection
+        const q = query(colectionnn, where("User_ID", "==", cuurrent_user_app()), where("Feito", "==", false)); // Create a query against the collection.
+        const querySnapshot = await getDocs(q);
+
+        var i = 0   //iniciando o contador
+        lista_tarefas.innerHTML = ""    //Limpando a lista de tarefas
+
+        querySnapshot.forEach((doc) => {
+
+            var tarefa = doc.data()
+            var card_user = renderizar_elemento(i, tarefa, doc.id)
+
+            lista_tarefas.innerHTML += card_user
+    
+            i = i + 1
+    
+        });
+
+    } else if (type == "search" && order == "feitos") {
+
+        const colectionnn = collection(db, "Tarefa"); // Create a reference to the cities collection
+        const q = query(colectionnn, where("User_ID", "==", cuurrent_user_app()), where("Feito", "==", true)); // Create a query against the collection.
+        const querySnapshot = await getDocs(q);
+
+        var i = 0   //iniciando o contador
+        lista_tarefas.innerHTML = ""    //Limpando a lista de tarefas
+
+        querySnapshot.forEach((doc) => {
+
+            var tarefa = doc.data()
+            var card_user = renderizar_elemento(i, tarefa, doc.id)
+
+            lista_tarefas.innerHTML += card_user
+    
+            i = i + 1
+    
+        });
+
+    } else if (type == "search" && order == "prioritarios") {
+
+        const colectionnn = collection(db, "Tarefa"); // Create a reference to the cities collection
+        const q = query(colectionnn, where("User_ID", "==", cuurrent_user_app()), where("Prioridade", "==", "alta")); // Create a query against the collection.
+        const querySnapshot = await getDocs(q);
+
+        var i = 0   //iniciando o contador
+        lista_tarefas.innerHTML = ""    //Limpando a lista de tarefas
+
+        querySnapshot.forEach((doc) => {
+
+            var tarefa = doc.data()
+            var card_user = renderizar_elemento(i, tarefa, doc.id)
+
+            lista_tarefas.innerHTML += card_user
+    
+            i = i + 1
+    
+        });
+
+    } else if (type == "search" && order == "categoria") {
+
+        const colectionnn = collection(db, "Tarefa"); // Create a reference to the cities collection
+        const q = query(colectionnn, where("User_ID", "==", cuurrent_user_app()), where("Categoria", "==", categoria)); // Create a query against the collection.
+        const querySnapshot = await getDocs(q);
+
+        var i = 0   //iniciando o contador
+        lista_tarefas.innerHTML = ""    //Limpando a lista de tarefas
+
+        querySnapshot.forEach((doc) => {
+
+            var tarefa = doc.data()
+            var card_user = renderizar_elemento(i, tarefa, doc.id)
+
+            lista_tarefas.innerHTML += card_user
+    
+            i = i + 1
+    
+        });
+
+    }
+
+}
+
+async function get_app_info_categorias (escopo) {
+
+    const db = getFirestore(app)
+
+    const colectionnn = collection(db, "Categorias"); // Create a reference to the cities collection
+    const q = query(colectionnn, where("User_ID", "==", cuurrent_user_app())); // Create a query against the collection.
+    const querySnapshot = await getDocs(q);
+
+    if (escopo == "drop") {
+
+        const dropdown_lista_categorias = document.querySelector(".dropdown-categorias")
+        dropdown_lista_categorias.innerHTML = `<option value="Selecione">Selecione...</option>`
+        
+        querySnapshot.forEach((doc) => {
+    
+            var categoria = doc.data()
+    
+            let dropdown_option = `
+                <option value="`+ categoria.Nome_categoria +`">`+ categoria.Nome_categoria +`</option>
+            `
+
+            dropdown_lista_categorias.innerHTML += dropdown_option
+
+        });
+
+    } else if (escopo == "list-user") {
+
+        const lista_categorias = document.querySelector(".categories-list")
+        lista_categorias.innerHTML = ""
+
+        querySnapshot.forEach((doc) => {
+    
+            var categoria = doc.data()
+    
+            var objeto_categoria = `
+                <li class="select-categoria">
+                    <div class="categorie-color" style="background-color: `+ categoria.Cor +`;"></div>
+                    <strong class="nome-categoria">`+ categoria.Nome_categoria +`</strong>
+                </li>
+            `
+
+            lista_categorias.innerHTML += objeto_categoria
+            
+        });
+
+    } else if (escopo == "list-form") {
+
+        const lista_categorias_form = document.querySelector(".categorias-input-form")
+        lista_categorias_form.innerHTML = ""
+
+        querySnapshot.forEach((doc) => {
+    
+            var categoria = doc.data()
+
+            let form_dropdown_option = `
+                <option value="`+ categoria.Nome_categoria +`">`+ categoria.Nome_categoria +`</option>
+            `
+            
+
+            lista_categorias_form.innerHTML += form_dropdown_option
+            
+        });
+
+    }
+
 }
 
 function initialize_events_listeners () {
 
+    //Funções para os botôes dos cards
     async function detar_card_by_id (card_id) {
         const db = getFirestore(app) //Configurando o fire store
         await deleteDoc(doc(db, "Tarefa", card_id));
@@ -150,7 +315,8 @@ function initialize_events_listeners () {
 
         // Set the "capital" field of the city 'DC'
         await updateDoc(doc_referencia, {
-            Data_fim: data_completa
+            Data_fim: data_completa,
+            Feito: true
         });
 
         alert("Tarefa concluida")
@@ -160,72 +326,91 @@ function initialize_events_listeners () {
         //Função para edição do card aqui
     }
     
-    var expandir = document.querySelectorAll(".expandir-tarefa");
-    for (var i = 0; i < expandir.length; i++) {
-        
-        expandir[i].addEventListener('click', function(t) {
-            
-            var index_btn_expandir = t.currentTarget.querySelector('.index-btn-expandir').innerHTML;
-            
-            const card_detalhe = document.getElementById('container-detalhes-tarefa-'+ index_btn_expandir);
-            const card_tarefa =  document.getElementById('card-tarefa-'+ index_btn_expandir);
-            
-            if(card_detalhe.style.display == 'none') {
-                card_detalhe.style.display =  "flex";
-                card_tarefa.style.height = "150px"
-            }else {
-                card_detalhe.style.display =  "none";
-                card_tarefa.style.height = "60px"
-            }
-            
-        })
-    }
     
-    var deletar  = document.querySelectorAll(".btn-deleta-tarefa");
-    for (var j = 0; j < deletar.length; j++) { //Escuta para o botão de excluir o card
-
-        deletar[j].addEventListener('click', async function(t) {
-
-            var index_btn_deletar = t.currentTarget.querySelector('.index-btn-deletar').innerHTML;
-            const card_id = document.getElementById('card-tarefa-id-'+ index_btn_deletar).innerHTML;
-            await detar_card_by_id(card_id)
-        })
+    {   //Eventos de escuta do card
+        var expandir = document.querySelectorAll(".expandir-tarefa");
+        for (var i = 0; i < expandir.length; i++) {
+            
+            expandir[i].addEventListener('click', function(t) {
+                
+                var index_btn_expandir = t.currentTarget.querySelector('.index-btn-expandir').innerHTML;
+                
+                const card_detalhe = document.getElementById('container-detalhes-tarefa-'+ index_btn_expandir);
+                const card_tarefa =  document.getElementById('card-tarefa-'+ index_btn_expandir);
+                
+                if(card_detalhe.style.display == 'none') {
+                    card_detalhe.style.display =  "flex";
+                    card_tarefa.style.height = "150px"
+                }else {
+                    card_detalhe.style.display =  "none";
+                    card_tarefa.style.height = "60px"
+                }
+                
+            })
+        }
+        
+        var deletar  = document.querySelectorAll(".btn-deleta-tarefa");
+        for (var j = 0; j < deletar.length; j++) { //Escuta para o botão de excluir o card
+    
+            deletar[j].addEventListener('click', async function(t) {
+    
+                var index_btn_deletar = t.currentTarget.querySelector('.index-btn-deletar').innerHTML;
+                const card_id = document.getElementById('card-tarefa-id-'+ index_btn_deletar).innerHTML;
+                await detar_card_by_id(card_id)
+            })
+        }
+    
+        var concluir = document.querySelectorAll(".concluir-tarefa");
+        console.log("index concluir " + concluir.length);
+        for (var k = 0; k < concluir.length; k++) { //Escuta para o botão de excluir o card
+    
+            concluir[k].addEventListener('click', async function(t) {
+                var index_btn_concluir = t.currentTarget.querySelector('.index-btn-concluir').innerHTML;
+                const card_id = document.getElementById('card-tarefa-id-'+ index_btn_concluir).innerHTML;
+                console.log(card_id)
+                concluir_card_by_id(card_id)
+            })
+        }
+    
+        var editar = document.querySelectorAll(".editar-tarefa");
+        console.log("index editar " + editar.length);
+        for (var l = 0; l < editar.length; l++) { //Escuta para o botão de excluir o card
+    
+            editar[l].addEventListener('click', async function(t) {
+                var index_btn_editar = t.currentTarget.querySelector('.index-btn-editar').innerHTML;
+                const card_id = document.getElementById('card-tarefa-id-'+ index_btn_editar).innerHTML;
+                console.log(card_id)
+            })
+        }
     }
 
-    var concluir = document.querySelectorAll(".concluir-tarefa");
-    console.log("index concluir " + concluir.length);
-    for (var k = 0; k < concluir.length; k++) { //Escuta para o botão de excluir o card
+    {   //Eventos de escuta na lista de categorias
+        let categoria = document.querySelectorAll(".select-categoria");
+        console.log("qtde categoria " + categoria.length);
 
-        concluir[k].addEventListener('click', async function(t) {
-            var index_btn_concluir = t.currentTarget.querySelector('.index-btn-concluir').innerHTML;
-            const card_id = document.getElementById('card-tarefa-id-'+ index_btn_concluir).innerHTML;
-            console.log(card_id)
-            concluir_card_by_id(card_id)
-        })
+        for (var k = 0; k < categoria.length; k++) { //Escuta para o botão de excluir o card
+    
+            categoria[k].addEventListener('click', async function(t) {
+                let nome_categoria  = t.currentTarget.querySelector('.nome-categoria').innerHTML;
+                console.log(nome_categoria)
+
+                get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", nome_categoria)
+                initialize_events_listeners()
+            })
+        }
     }
-
-    var editar = document.querySelectorAll(".editar-tarefa");
-    console.log("index editar " + editar.length);
-    for (var l = 0; l < editar.length; l++) { //Escuta para o botão de excluir o card
-
-        editar[l].addEventListener('click', async function(t) {
-            var index_btn_editar = t.currentTarget.querySelector('.index-btn-editar').innerHTML;
-            const card_id = document.getElementById('card-tarefa-id-'+ index_btn_editar).innerHTML;
-            console.log(card_id)
-        })
-    }
-
 }
       
-//Verificando status de login e realizando o carregamento das informações do app
+//Verificando status de login e iniciando a interface visual parra o usuário
 const auth = getAuth();
 onAuthStateChanged(auth, async (user) => { //Validando se o usuário está logado oou não
     if (user) {
 
         await get_user_infos(user)
-
-        await get_infos_app_tarefas(user.uid)
-
+        await get_infos_app_tarefas(user.uid, "init", "exe", "")
+        await get_app_info_categorias("drop")
+        await get_app_info_categorias("list-user")
+        await get_app_info_categorias("list-form")
         initialize_events_listeners()
 
     } else {
@@ -253,11 +438,11 @@ async function show_tarefa_forms () {
 const btn_nova_tarefa = document.querySelector(".btn-nova-tarefa")
 btn_nova_tarefa.addEventListener("click", async () => {
     await show_tarefa_forms()
-    await get_infos_app_tarefas(cuurrent_user_app())
+    await get_infos_app_tarefas(cuurrent_user_app(), "init", "exe", "")
     initialize_events_listeners()
 })
 
-async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada) {
+async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada, categoria) {
 
     console.log(titulo, prioridade, desc, data_planejada)
 
@@ -273,7 +458,7 @@ async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada) {
 
             const db = getFirestore(app) //Configurando o fire store
             const docRef = await addDoc(collection(db, "Tarefa"), {
-                Categoria: "Minha categoria",
+                Categoria: categoria,
                 Cor: "#W4WFAD16DA",
                 Data_fim: "",
                 Data_inicio: "09/05/2023",
@@ -302,18 +487,52 @@ btn_cadastrar_tarefa.addEventListener("click", () => {
     var my_prioridade = document.getElementById("prioridade").value
     var my_desc = document.getElementById("descricao").value
     var my_data_planejada = document.getElementById("data_planejada").value
+    var my_categoria = document.getElementById("categoria").value
 
-    cadastrar_tarefa(my_titulo, my_prioridade, my_desc, my_data_planejada)
+    cadastrar_tarefa(my_titulo, my_prioridade, my_desc, my_data_planejada, my_categoria)
 })
+
+
+{   //Filtros do usuário (menu bar)
+    const btn_todos = document.querySelector(".todos-cards")//todos as tarefas
+    btn_todos.addEventListener("click", async () => {
+        await get_infos_app_tarefas(cuurrent_user_app(), "init", "exe", "")
+        initialize_events_listeners()
+    })
+
+    const btn_incompletos = document.querySelector(".cards-incompletos")// tarefas incompletas
+    btn_incompletos.addEventListener("click", async () => {
+        await get_infos_app_tarefas(cuurrent_user_app(), "search", "incompletos", "")
+        initialize_events_listeners()
+    })
+
+    const btn_feitos = document.querySelector(".cards-feitos")// tarefas feitas
+    btn_feitos.addEventListener("click", async () => {
+        await get_infos_app_tarefas(cuurrent_user_app(), "search", "feitos", "")
+        initialize_events_listeners()
+    })
+
+    const btn_prioritarios = document.querySelector(".cards-prioritarios")//tarefas prioritarias
+    btn_prioritarios.addEventListener("click", async () => {
+        await get_infos_app_tarefas(cuurrent_user_app(), "search", "prioritarios", "")
+        initialize_events_listeners()
+    })
+}
+
+{
+    const btn_nova_categoria = document.querySelector(".img-btn-mais-categorias")
+    btn_nova_categoria.addEventListener("click", () => {
+        alert("Criar nova categoria para o usuário")
+    })
+}
 
 //Monitorando alterações no banco de dados
 const db = getFirestore(app)
 onSnapshot(collection(db, "Tarefa"), async () => {
     console.log("Alteração detectada");
-    await get_infos_app_tarefas(cuurrent_user_app()) //Tem que esperar os elementos do app carregarem para rodar o add event listenner
+    await get_infos_app_tarefas(cuurrent_user_app(), "init", "exe", "") //Tem que esperar os elementos do app carregarem para rodar o add event listenner
     initialize_events_listeners()
 });
-
 
 //Encerrando login
 const btnLogout = document.querySelector(".btn-logout")
@@ -326,33 +545,6 @@ btnLogout.addEventListener("click", ()=>{
     });
     
 })
-
-
-
-//Filtros do usuário (menu bar)
-const btn_todos = document.querySelector(".todos-cards")
-btn_todos.addEventListener("click", async () => {
-    await get_infos_app_tarefas(cuurrent_user_app())
-    initialize_events_listeners()
-    alert("todos cards")
-})
-
-const btn_incompletos = document.querySelector(".cards-incompletos")
-btn_incompletos.addEventListener("click", async () => {
-    alert("cards incompletos")
-})
-
-const btn_feitos = document.querySelector(".cards-feitos")
-btn_feitos.addEventListener("click", async () => {
-    alert("cards feitos")
-})
-
-const btn_prioritarios = document.querySelector(".cards-prioritarios")
-btn_prioritarios.addEventListener("click", async () => {
-    alert("cards prioritarios")
-})
-
-
 
 //Tela para a configuração do usuário
 

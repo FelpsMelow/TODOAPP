@@ -115,6 +115,7 @@ body * {
 
 .img-btn-mais-categorias { /*fazer a altura da imagem ficar com o tamanho dinamico*/
     height: 25px;
+    cursor: pointer;
 }
 
 .categories-list {
@@ -132,6 +133,7 @@ body * {
     align-items: center;
     margin-top: 20px;
     color: #323536cc;
+    cursor: pointer;
 }
 
 .categorie-color {
@@ -186,7 +188,10 @@ body * {
     flex-direction: row;
     align-items: center;
     color: #222324e5;
+}
 
+.list-buttons li select {
+    margin: 0;
 }
 
 .list-buttons li div {

@@ -28,7 +28,7 @@
 					</div>
 					<div class="data-card">
 						<h1>0</h1>
-						<h6>Abertas</h6>
+						<h6>Atrazos</h6>
 					</div>
 				</div>
 			</div>
@@ -38,42 +38,6 @@
 					<img src="btn_mais_categoria.png" alt="" class="img-btn-mais-categorias">
 				</h2>
 				<ul class="categories-list">
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Trabalho</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Faculdade</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Lazer</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Treino</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Work</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Work</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Work</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Work</strong>
-					</li>
-					<li>
-						<div class="categorie-color"></div>
-						<strong>Work</strong>
-					</li>
 				</ul>
 			</div>
 			<div class="hr"></div>
@@ -88,7 +52,11 @@
 				<ul class="list-buttons">
 					<li>
 						<div class="categorie-color"></div>
-						<h2><strong>Work</strong></h2>
+						<select class="dropdown-categorias">
+							<option value="option1">Work</option>
+							<option value="option2">Opção aaaaaaaaa2</option>
+							<option value="option3">Opção 3</option>
+						</select>
 					</li>
 					<li class="container-list-buttons-filter">
 						<ul class="list-buttons-filter">
@@ -146,7 +114,7 @@
 					
 						<div>
 							<label for="categoria">Categoria:</label>
-							<select id="prioridade" name="prioridade" required>
+							<select id="categoria" class="categorias-input-form" name="prioridade" required>
 								<option value="">Selecione...</option>
 								<option value="alta">Trabalho</option>
 								<option value="media">Faculdade</option>
