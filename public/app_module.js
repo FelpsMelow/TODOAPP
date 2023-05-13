@@ -49,7 +49,10 @@ function cuurrent_user_app () {
     }
 }
 
-async function get_infos_app_tarefas (uid) {
+//Carregar as informações do usuário
+//Carregar as minhas categorias
+
+async function get_infos_app_tarefas (uid) { //Rodar função de acordo com cada tipo de filtro ou carregamento
 
     const db = getFirestore(app) //Configurando o fire store
 
@@ -278,6 +281,7 @@ async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada) {
                 Descricao: desc,
                 Prioridade: prioridade,
                 Titulo: titulo,
+                Feito: false,
                 User_ID: uid
             });
 
@@ -325,7 +329,28 @@ btnLogout.addEventListener("click", ()=>{
 
 
 
+//Filtros do usuário (menu bar)
+const btn_todos = document.querySelector(".todos-cards")
+btn_todos.addEventListener("click", async () => {
+    await get_infos_app_tarefas(cuurrent_user_app())
+    initialize_events_listeners()
+    alert("todos cards")
+})
 
+const btn_incompletos = document.querySelector(".cards-incompletos")
+btn_incompletos.addEventListener("click", async () => {
+    alert("cards incompletos")
+})
+
+const btn_feitos = document.querySelector(".cards-feitos")
+btn_feitos.addEventListener("click", async () => {
+    alert("cards feitos")
+})
+
+const btn_prioritarios = document.querySelector(".cards-prioritarios")
+btn_prioritarios.addEventListener("click", async () => {
+    alert("cards prioritarios")
+})
 
 
 
