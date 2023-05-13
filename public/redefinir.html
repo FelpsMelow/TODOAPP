@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_redefinir.css">
+    <link rel="stylesheet" href="style_alertas.css">
     <title>Redefinir senha</title>
 </head>
 <body>
     <div class="main-redefinir">
 
-        <span class="ms erro"><img src="sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i> Erro ao cadastrar !</span>
+        <span class="ms erro"><img src="sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não informado !</span>
+        <span class="warning"><img src="sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Email inválido !</span>
 
         <div class=" left-container">
             <h1 class="left-login-h1">Esqueceu a senha?<br>Podemos recupera-la!</h1>
@@ -22,13 +24,13 @@
                 <h1>Recuperar senha</h1>
                 <p>Insira seu endereço de e-mail abaixo e enviaremos um link para redefinir sua senha.</p>
                 <label for="email">E-mail
-                    <input type="email" id="email" name="email" placeholder="Seu e-mail">
+                    <input type="email" id="email" class="email" name="email" placeholder="Seu e-mail">
                 </label>
-                <button type="submit">Enviar</button>
+                <button type="button" class="btn-redefinir-senha">Enviar</button>
             </form>
         </div>
         
     </div>
-   
+    <script type="module" src="script_redefinir_senha_module.js"></script>
 </body>
 </html>
