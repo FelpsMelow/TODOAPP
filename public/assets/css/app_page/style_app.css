@@ -19,7 +19,7 @@ body * {
     height: 100vh;
     display: flex;
     flex-direction: row;
-    background-color: white;
+    background-color: rgb(219, 13, 13);
 }
 
 .sidebar {
