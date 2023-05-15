@@ -289,7 +289,7 @@ async function get_app_info_categorias (escopo) {
 
 }
 
-function initialize_events_listeners () {
+async function initialize_events_listeners () {
 
     //Funções para os botôes dos cards
     async function detar_card_by_id (card_id) {
@@ -395,7 +395,6 @@ function initialize_events_listeners () {
                 console.log(nome_categoria)
 
                 await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", nome_categoria)
-                initialize_events_listeners()
             })
         }
     }
@@ -411,7 +410,6 @@ onAuthStateChanged(auth, async (user) => { //Validando se o usuário está logad
         await get_app_info_categorias("drop")
         await get_app_info_categorias("list-user")
         await get_app_info_categorias("list-form")
-        initialize_events_listeners()
 
     } else {
         window.location.href = "index.html"
@@ -432,14 +430,16 @@ async function show_tarefa_forms () {
         container_form_nova_tarefa.style.display =  "none";
         btn_nova_tarefa_2.innerHTML =  "NOVA TAREFA";
 
-    }  
+    }
+
+    await initialize_events_listeners()
 }
 
 const btn_nova_tarefa = document.querySelector(".btn-nova-tarefa")
 btn_nova_tarefa.addEventListener("click", async () => {
     await show_tarefa_forms()
     await get_infos_app_tarefas(cuurrent_user_app(), "init", "exe", "")
-    initialize_events_listeners()
+    await initialize_events_listeners()
 })
 
 async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada, categoria) {
@@ -474,7 +474,7 @@ async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada, categ
 }
 
 const btn_cadastrar_tarefa = document.querySelector(".btn-cadastrar-tarefa")
-btn_cadastrar_tarefa.addEventListener("click", () => {
+btn_cadastrar_tarefa.addEventListener("click",  async () => {
 
     var my_titulo = document.getElementById("titulo").value
     var my_prioridade = document.getElementById("prioridade").value
@@ -482,7 +482,7 @@ btn_cadastrar_tarefa.addEventListener("click", () => {
     var my_data_planejada = document.getElementById("data_planejada").value
     var my_categoria = document.getElementById("categoria").value
 
-    cadastrar_tarefa(my_titulo, my_prioridade, my_desc, my_data_planejada, my_categoria)
+    await cadastrar_tarefa(my_titulo, my_prioridade, my_desc, my_data_planejada, my_categoria)
 })
 
 
@@ -490,25 +490,25 @@ btn_cadastrar_tarefa.addEventListener("click", () => {
     const btn_todos = document.querySelector(".todos-cards")//todos as tarefas
     btn_todos.addEventListener("click", async () => {
         await get_infos_app_tarefas(cuurrent_user_app(), "init", "exe", "")
-        initialize_events_listeners()
+        await initialize_events_listeners()
     })
 
     const btn_incompletos = document.querySelector(".cards-incompletos")// tarefas incompletas
     btn_incompletos.addEventListener("click", async () => {
         await get_infos_app_tarefas(cuurrent_user_app(), "search", "incompletos", "")
-        initialize_events_listeners()
+        await initialize_events_listeners()
     })
 
     const btn_feitos = document.querySelector(".cards-feitos")// tarefas feitas
     btn_feitos.addEventListener("click", async () => {
         await get_infos_app_tarefas(cuurrent_user_app(), "search", "feitos", "")
-        initialize_events_listeners()
+        await initialize_events_listeners()
     })
 
     const btn_prioritarios = document.querySelector(".cards-prioritarios")//tarefas prioritarias
     btn_prioritarios.addEventListener("click", async () => {
         await get_infos_app_tarefas(cuurrent_user_app(), "search", "prioritarios", "")
-        initialize_events_listeners()
+        await initialize_events_listeners()
     })
 }
 
@@ -529,7 +529,7 @@ btn_cadastrar_tarefa.addEventListener("click", () => {
     })
 
     const btn_fechar_categoria = document.querySelector(".img-btn-fechar-mais-categorias")
-    btn_fechar_categoria.addEventListener("click", () => {
+    btn_fechar_categoria.addEventListener("click", async () => {
 
         const btn_fechar = document.querySelector(".img-btn-fechar-mais-categorias")
         const btn_mais = document.querySelector(".img-btn-mais-categorias")
@@ -542,7 +542,7 @@ btn_cadastrar_tarefa.addEventListener("click", () => {
         btn_mais.style.display =  "block";
         lista_categorias.style.display =  "block";
 
-        initialize_events_listeners()
+        await initialize_events_listeners()
 
     })
 
@@ -585,6 +585,7 @@ const db = getFirestore(app)
 onSnapshot(collection(db, "Tarefa"), async () => {
     console.log("Alteração detectada");
     await get_infos_app_tarefas(cuurrent_user_app(), "init", "exe", "") //Tem que esperar os elementos do app carregarem para rodar o add event listenner
+    await initialize_events_listeners ()
 });
 
 //Encerrando login
@@ -607,7 +608,7 @@ const filtro_categorias_drop = document.querySelector(".dropdown-categorias")
 filtro_categorias_drop.addEventListener("change", async () => {
     var valor_selecionado = document.querySelector(".dropdown-categorias").value
     await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", valor_selecionado)
-    initialize_events_listeners()
+    await initialize_events_listeners()
 })
 
 //Tela para a configuração do usuário
