@@ -96,7 +96,6 @@ body * {
     padding-top: 0px;
     width: 100%;
     height: 35%;
-    overflow-y: scroll;
     color: #222324e5;
 }
 
@@ -123,6 +122,7 @@ body * {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .categories-list li {
@@ -212,7 +212,7 @@ body * {
 
 
 .list-buttons-filter li button{
-    width: 100%;
+    width: 100px;
     height: 70%;
     padding-left: 10px;
     padding-right: 10px;
