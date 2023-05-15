@@ -10,10 +10,17 @@
 	<link rel="stylesheet" href="assets/css/app_page/style_user_screnn.css">
     <link rel="stylesheet" href="assets/css/common/style_spinner.css">
 	<link rel="stylesheet" href="assets/css/common/style_toggle_switch.css">
+	<link rel="stylesheet" href="assets/css/common/style_alertas.css">
 	<title>To do app</title>
 </head>
 <body>
 	<div class="container-app">
+
+		<span class="erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não cadastrado !</span>
+        <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Login inválido !</span>
+        <span class="success"><img src="assets/imgs/alertas/sinal-de-ok.png" class="img-success" alt=""><i class="icon icon-hand-paper-o"></i>Categoria cadastrada !</span>
+
+
 		<div class="sidebar">
 			<div class="user-infos">
 				<img src="assets/imgs/app_page/foto de perfil.jpg" alt="">
@@ -36,10 +43,20 @@
 			<div class="hr"></div>
 			<div class="categories">
 				<h2>Categorias
-					<img src="assets/imgs/app_page/btn_mais_categoria.png" alt="" class="img-btn-mais-categorias">
+					<img src="assets/imgs/app_page/btn_mais_categoria.png" alt="" class="img-btn-mais-categorias" style="display: block;">
+					<img src="assets/imgs/app_page/btn-fechar.png" alt="" class="img-btn-fechar-mais-categorias" style="display: none;">
 				</h2>
 				<ul class="categories-list">
 				</ul>
+				<div class="form-nova-categoria" style="display: none;">
+					</label>DIgite o nome da categoria<label>
+					<input type="text" placeholder="Categoria" id="nome_da_categoria" maxlength="19">
+
+					<label for="cor">Cor:</label>
+					<input type="color" id="cor_da_categoria" name="cor" required>
+					
+					<button class="adicionar-categoria">SALVAR</button>
+				</div>
 			</div>
 			<div class="hr"></div>
 			<footer class="buttons-option">

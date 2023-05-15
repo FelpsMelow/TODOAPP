@@ -394,7 +394,7 @@ function initialize_events_listeners () {
                 let nome_categoria  = t.currentTarget.querySelector('.nome-categoria').innerHTML;
                 console.log(nome_categoria)
 
-                get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", nome_categoria)
+                await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", nome_categoria)
                 initialize_events_listeners()
             })
         }
@@ -446,38 +446,31 @@ async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada, categ
 
     console.log(titulo, prioridade, desc, data_planejada)
 
-    const auth = getAuth();
-    const user = auth.currentUser;
 
-    if (user !== null) {
-        
-        const uid = user.uid;
-        console.log(uid)
+    try {
 
-        try {
+        const db = getFirestore(app) //Configurando o fire store
+        const docRef = await addDoc(collection(db, "Tarefa"), {
+            Categoria: categoria,
+            Cor: "#W4WFAD16DA",
+            Data_fim: "",
+            Data_inicio: "09/05/2023",
+            Data_planejada: data_planejada,
+            Descricao: desc,
+            Prioridade: prioridade,
+            Titulo: titulo,
+            Feito: false,
+            User_ID: cuurrent_user_app()
+        });
 
-            const db = getFirestore(app) //Configurando o fire store
-            const docRef = await addDoc(collection(db, "Tarefa"), {
-                Categoria: categoria,
-                Cor: "#W4WFAD16DA",
-                Data_fim: "",
-                Data_inicio: "09/05/2023",
-                Data_planejada: data_planejada,
-                Descricao: desc,
-                Prioridade: prioridade,
-                Titulo: titulo,
-                Feito: false,
-                User_ID: uid
-            });
+        console.log("Document written with ID: ", docRef.id);
 
-            console.log("Document written with ID: ", docRef.id);
-
-        }
-    
-        catch (e) {
-            console.error("Error adding document: ", e);
-        }
     }
+
+    catch (e) {
+        console.error("Error adding document: ", e);
+    }
+
 }
 
 const btn_cadastrar_tarefa = document.querySelector(".btn-cadastrar-tarefa")
@@ -519,10 +512,71 @@ btn_cadastrar_tarefa.addEventListener("click", () => {
     })
 }
 
-{
+{   // Lista de categorias e cadastro de categorias
     const btn_nova_categoria = document.querySelector(".img-btn-mais-categorias")
     btn_nova_categoria.addEventListener("click", () => {
-        alert("Criar nova categoria para o usuário")
+
+        const btn_fechar = document.querySelector(".img-btn-fechar-mais-categorias")
+        const btn_mais = document.querySelector(".img-btn-mais-categorias")
+        const lista_categorias = document.querySelector(".categories-list")
+        const form_nova_categoria = document.querySelector(".form-nova-categoria")
+        
+     
+        btn_fechar.style.display =  "block";
+        form_nova_categoria.style.display =  "block";
+        btn_mais.style.display =  "none";
+        lista_categorias.style.display =  "none";
+    })
+
+    const btn_fechar_categoria = document.querySelector(".img-btn-fechar-mais-categorias")
+    btn_fechar_categoria.addEventListener("click", () => {
+
+        const btn_fechar = document.querySelector(".img-btn-fechar-mais-categorias")
+        const btn_mais = document.querySelector(".img-btn-mais-categorias")
+        const lista_categorias = document.querySelector(".categories-list")
+        const form_nova_categoria = document.querySelector(".form-nova-categoria")
+        
+     
+        btn_fechar.style.display =  "none";
+        form_nova_categoria.style.display =  "none";
+        btn_mais.style.display =  "block";
+        lista_categorias.style.display =  "block";
+
+        initialize_events_listeners()
+
+    })
+
+    const btn_salvar_categoria = document.querySelector(".adicionar-categoria")
+    btn_salvar_categoria.addEventListener("click", async () => {
+
+        var categoria = document.getElementById("nome_da_categoria").value
+        var cor = document.getElementById("cor_da_categoria").value
+
+        try {
+
+            const db = getFirestore(app) //Configurando o fire store
+            const docRef = await addDoc(collection(db, "Categorias"), {
+                Nome_categoria: categoria,
+                Cor: cor,
+                User_ID: cuurrent_user_app()
+            });
+    
+            console.log("Document written with ID: ", docRef.id);
+    
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+
+        var categoria = document.getElementById("nome_da_categoria").value = ""
+        var cor = document.getElementById("cor_da_categoria").value = ""
+
+        //Colocar um span para informar o cadastro da categoria
+
+        alert("Categoria cadastrada!")
+
+        get_app_info_categorias("list-user")
+        get_app_info_categorias("list-form")
+        get_app_info_categorias("drop")
     })
 }
 
@@ -531,7 +585,6 @@ const db = getFirestore(app)
 onSnapshot(collection(db, "Tarefa"), async () => {
     console.log("Alteração detectada");
     await get_infos_app_tarefas(cuurrent_user_app(), "init", "exe", "") //Tem que esperar os elementos do app carregarem para rodar o add event listenner
-    initialize_events_listeners()
 });
 
 //Encerrando login
@@ -544,6 +597,17 @@ btnLogout.addEventListener("click", ()=>{
         alert("Erro ao sair")
     });
     
+})
+
+
+
+// testando seleção do dropdown
+
+const filtro_categorias_drop = document.querySelector(".dropdown-categorias")
+filtro_categorias_drop.addEventListener("change", async () => {
+    var valor_selecionado = document.querySelector(".dropdown-categorias").value
+    await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", valor_selecionado)
+    initialize_events_listeners()
 })
 
 //Tela para a configuração do usuário
