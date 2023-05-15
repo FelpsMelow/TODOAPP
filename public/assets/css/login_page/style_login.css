@@ -18,7 +18,7 @@ body * {
 .main-login{
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to right, #000428e1, #921d00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #000428e1, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     justify-content: center;
     align-items: center;
