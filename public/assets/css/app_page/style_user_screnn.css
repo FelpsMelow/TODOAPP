@@ -1,5 +1,5 @@
 .app-screnn-user {
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 20px;
   width: 100%;
@@ -30,20 +30,22 @@
   align-items: center;
 }
 
-.content-configs div {
-  height: 135px;
-  width: 120px;
+.recebe-img {
+  height: 155px;
+  width: 140px;
   border-radius: 3px;
+  padding: 5px;
   border-style: dashed;
   border-color: rgb(255, 255, 255);
   border-width: 2px;
   background-color: #706a6a93;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .user-img {
-  display: none;
-  width: 120px;
+  width: 100%;
   border-radius: 10px;
 }
 
