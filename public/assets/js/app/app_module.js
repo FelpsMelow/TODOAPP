@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 
-import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
+import { getAuth, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
 
 import { doc, updateDoc, addDoc,  getDoc, getDocs, onSnapshot, getFirestore, deleteDoc, collection ,where, query } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
 
@@ -19,7 +19,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);  // ------------------------------
 
-async function get_user_infos (user) {
+async function get_user_infos (user) { 
+    
+    //inicializar a foto de perfil aqui
+    const auth = getAuth();
+    const local_user = auth.currentUser;
+
+    let foto_perfil = document.getElementById("foto_do_usuario")
+    if (local_user.photoURL) {
+        foto_perfil.setAttribute('src', local_user.photoURL);
+    } else {
+        foto_perfil.setAttribute('src', "assets/imgs/app_page/user.png");
+    }
 
     const db = getFirestore(app) //Configurando o fire store
 
@@ -44,6 +55,9 @@ async function get_user_infos (user) {
 function cuurrent_user_app () {
     const auth = getAuth();
     const user = auth.currentUser;
+
+    console.log(user)
+
     if (user !== null) {
         const uid = user.uid;
         return uid
@@ -631,7 +645,7 @@ btn_user.addEventListener("click", async () => {
         app_crenn_lista_tarefas.style.display =  "flex";
         app_screen_user.style.display =  "none";
         btn_nova_tarefa_3.style.display = 'block';
-        
+
     } else {
         app_crenn_lista_tarefas.style.display =  "none";
         app_screen_user.style.display =  "flex";
@@ -669,6 +683,19 @@ async function exibir_imagem (ref_file) {
         // Or inserted into an <img> element colocando a imagem em um elemento img
         const img_user = document.querySelector(".user-img")
         img_user.setAttribute('src', url);
+
+
+        //Atualizando url da foto do usuário
+        const auth = getAuth();
+        updateProfile(auth.currentUser, {
+            photoURL: url
+        }).then(() => {
+            // Profile updated!
+            // ...
+        }).catch((error) => {
+            // An error occurred 
+            // ...
+        });
     })
     .catch((error) => {
         // Handle any errors
