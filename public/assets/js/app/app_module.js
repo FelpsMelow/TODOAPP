@@ -29,7 +29,7 @@ async function get_user_infos (user) {
     if (local_user.photoURL) {
         foto_perfil.setAttribute('src', local_user.photoURL);
     } else {
-        foto_perfil.setAttribute('src', "assets/imgs/app_page/user.png");
+        foto_perfil.setAttribute('src', "assets/imgs/app_page/editar-foto-de-perfil.png");
     }
 
     const db = getFirestore(app) //Configurando o fire store
@@ -274,9 +274,10 @@ async function get_app_info_categorias (escopo) {
             var categoria = doc.data()
     
             var objeto_categoria = `
-                <li class="select-categoria">
+                <li class="select-categoria" style="display:flex; flex-direction: row; justify-content: space-between; width: max-content;">
                     <div class="categorie-color" style="background-color: `+ categoria.Cor +`;"></div>
                     <strong class="nome-categoria">`+ categoria.Nome_categoria +`</strong>
+                    <img src="assets/imgs/app_page/icon-edit.png" style="width: 20px; margin-left: 10px">
                 </li>
             `
 
@@ -620,116 +621,101 @@ btnLogout.addEventListener("click", ()=>{
 
 
 
-// testando seleção do dropdown
-
 const filtro_categorias_drop = document.querySelector(".dropdown-categorias")
 filtro_categorias_drop.addEventListener("change", async () => {
     var valor_selecionado = document.querySelector(".dropdown-categorias").value
-    await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", valor_selecionado)
-    await initialize_events_listeners()
+    console.log(valor_selecionado)
+    if (valor_selecionado != "Selecione") {
+        await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", valor_selecionado)
+        await initialize_events_listeners()
+    } else {
+        await get_infos_app_tarefas(cuurrent_user_app(), "search", "todos", "")
+    }
 })
 
 //Tela para a configuração do usuário
 
+{ //Tela para a configuração do usuário
 
-const btn_user = document.querySelector(".btn-user")
-btn_user.addEventListener("click", async () => {
+    const btn_user = document.querySelector(".btn-user")
+    btn_user.addEventListener("click", async () => {
 
-    const app_crenn_lista_tarefas = document.querySelector(".container-list-e-forms")
-    const app_screen_user = document.querySelector(".app-screnn-user")
- 
-    const btn_nova_tarefa_3 = document.querySelector(".btn-nova-tarefa")
+        const app_crenn_lista_tarefas = document.querySelector(".container-list-e-forms")
+        const app_screen_user = document.querySelector(".app-screnn-user")
+    
+        const btn_nova_tarefa_3 = document.querySelector(".btn-nova-tarefa")
 
 
-    if (app_crenn_lista_tarefas.style.display == "none") {
-        app_crenn_lista_tarefas.style.display =  "flex";
-        app_screen_user.style.display =  "none";
-        btn_nova_tarefa_3.style.display = 'block';
+        if (app_crenn_lista_tarefas.style.display == "none") {
+            app_crenn_lista_tarefas.style.display =  "flex";
+            app_screen_user.style.display =  "none";
+            btn_nova_tarefa_3.style.display = 'block';
 
-    } else {
-        app_crenn_lista_tarefas.style.display =  "none";
-        app_screen_user.style.display =  "flex";
-        btn_nova_tarefa_3.style.display = 'none';
+        } else {
+            app_crenn_lista_tarefas.style.display =  "none";
+            app_screen_user.style.display =  "flex";
+            btn_nova_tarefa_3.style.display = 'none';
+        }
+    })
+
+    const input_file_img = document.getElementById("input_user_img")
+    const start_input_file = document.querySelector(".recebe-img")
+    start_input_file.addEventListener("click", async () => {
+        input_file_img.click() //Disparando o evento click no input file por meio do click na imagem do usuário
+    })
+
+    async function exibir_imagem (ref_file) {
+        getDownloadURL(ref_file)
+        .then((url) => {
+            // `url` is the download URL for 'images/stars.jpg'
+
+            // This can be downloaded directly:
+            const xhr = new XMLHttpRequest();
+                xhr.responseType = 'blob';
+                xhr.onload = (event) => {
+                const blob = xhr.response;
+            };
+
+            xhr.open('GET', url);
+            xhr.send();
+
+            // Or inserted into an <img> element colocando a imagem em um elemento img
+            const img_user = document.querySelector(".user-img")
+            img_user.setAttribute('src', url);
+
+
+            //Atualizando url da foto do usuário
+            const auth = getAuth();
+            updateProfile(auth.currentUser, {
+                photoURL: url
+            }).then(() => {
+                // Profile updated!
+                // ...
+            }).catch((error) => {
+                // An error occurred 
+                // ...
+            });
+        })
+        .catch((error) => {
+            // Handle any errors
+        });
     }
 
-    //To do
-    //Ocultar o botão de nova tarefa e alinhar ele no centro do forms
-    //Fazer a mudança de tema
-    //Implementar o upload de arquivos
-    
-})
+    const input_file = document.getElementById("input_user_img")
+    input_file.addEventListener('change', function(event) {
 
-const input_file_img = document.getElementById("input_user_img")
-const start_input_file = document.querySelector(".recebe-img")
-start_input_file.addEventListener("click", async () => {
-    input_file_img.click() //Disparando o evento click no input file por meio do click na imagem do usuário
-})
-
-async function exibir_imagem (ref_file) {
-    getDownloadURL(ref_file)
-    .then((url) => {
-        // `url` is the download URL for 'images/stars.jpg'
-
-        // This can be downloaded directly:
-        const xhr = new XMLHttpRequest();
-            xhr.responseType = 'blob';
-            xhr.onload = (event) => {
-            const blob = xhr.response;
-        };
-
-        xhr.open('GET', url);
-        xhr.send();
-
-        // Or inserted into an <img> element colocando a imagem em um elemento img
-        const img_user = document.querySelector(".user-img")
-        img_user.setAttribute('src', url);
+        // Initialize Cloud Storage and get a reference to the service
+        const storage = getStorage(app);
+        var file = event.target.files[0]; // Obtenha o arquivo selecionado
+        
+        const imageRef = ref(storage, 'foto_perfil/teste.png');
 
 
-        //Atualizando url da foto do usuário
-        const auth = getAuth();
-        updateProfile(auth.currentUser, {
-            photoURL: url
-        }).then(() => {
-            // Profile updated!
-            // ...
-        }).catch((error) => {
-            // An error occurred 
-            // ...
+        // 'file' comes from the Blob or File API
+        uploadBytes(imageRef, file).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+            exibir_imagem(imageRef)
         });
-    })
-    .catch((error) => {
-        // Handle any errors
     });
+
 }
-
-const input_file = document.getElementById("input_user_img")
-input_file.addEventListener('change', function(event) {
-
-    // Initialize Cloud Storage and get a reference to the service
-    const storage = getStorage(app);
-    var file = event.target.files[0]; // Obtenha o arquivo selecionado
-
-    //var reader = new FileReader(); // Crie um objeto FileReader
-
-    // Defina a função de callback que será chamada quando a leitura for concluída
-    //reader.onload = function(e) {
-        //var contents = e.target.result; // Conteúdo do arquivo
-
-        // Faça algo com o conteúdo do arquivo
-        //console.log(contents);
-    //};
-
-    // Leia o arquivo como texto
-    
-    //var file_lido = reader.readAsArrayBuffer(file)
-    
-    const imageRef = ref(storage, 'foto_perfil/teste.png');
-
-
-    // 'file' comes from the Blob or File API
-    uploadBytes(imageRef, file).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
-        exibir_imagem(imageRef)
-    });
-});
-
