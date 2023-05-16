@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload file</title>
+</head>
+<body>
+    <script type="module">
+        //Sempre usar versões para todos os SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import { getStorage, ref, getDownloadURL, uploadBytes } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
+
+        // TODO: Replace the following with your app's Firebase project configuration
+        // See: https://firebase.google.com/docs/web/learn-more#config-object
+        const firebaseConfig = {
+        //      apiKey: "AIzaSyALQDf28nocTbr9e-QrzCX58xj64OdTIis",
+            authDomain: "todolist-5e335.firebaseapp.com",
+            projectId: "todolist-5e335",
+            storageBucket: "todolist-5e335.appspot.com",
+            messagingSenderId: "189298719165",
+            appId: "1:189298719165:web:a60a2a6fb6d1176276bad4",
+            storageBucket: 'gs://todolist-5e335.appspot.com/'
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+
+        // Initialize Cloud Storage and get a reference to the service
+        const storage = getStorage(app);
+
+        const storageRef = ref(storage)
+        const imageRef = ref(storage, 'foto_perfil');
+        const fileRef = ref(storage, 'foto_perfil/foto de perfil.jpg')
+
+        const input_file = document.getElementById("my_file")
+        input_file.addEventListener('change', function(event) {
+            var file = event.target.files[0]; // Obtenha o arquivo selecionado
+
+            var reader = new FileReader(); // Crie um objeto FileReader
+
+            // Defina a função de callback que será chamada quando a leitura for concluída
+            reader.onload = function(e) {
+                var contents = e.target.result; // Conteúdo do arquivo
+
+                // Faça algo com o conteúdo do arquivo
+                //console.log(contents);
+            };
+
+            // Leia o arquivo como texto
+            
+            var file_lido = reader.readAsArrayBuffer(file)
+            
+            const imageRef = ref(storage, 'foto_perfil/teste.png');
+
+
+            // 'file' comes from the Blob or File API
+            uploadBytes(imageRef, file).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            });
+        });
+
+
+    </script>
+    <img src="" alt="" id="myimg">
+    <input type="file" id="my_file">
+</body>
+</html>

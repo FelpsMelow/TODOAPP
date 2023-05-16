@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload file</title>
+</head>
+<body>
+    <script type="module">
+        //Sempre usar versões para todos os SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
+
+        // TODO: Replace the following with your app's Firebase project configuration
+        // See: https://firebase.google.com/docs/web/learn-more#config-object
+        const firebaseConfig = {
+        //      apiKey: "AIzaSyALQDf28nocTbr9e-QrzCX58xj64OdTIis",
+            authDomain: "todolist-5e335.firebaseapp.com",
+            projectId: "todolist-5e335",
+            storageBucket: "todolist-5e335.appspot.com",
+            messagingSenderId: "189298719165",
+            appId: "1:189298719165:web:a60a2a6fb6d1176276bad4",
+            storageBucket: 'gs://todolist-5e335.appspot.com/'
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+
+        // Initialize Cloud Storage and get a reference to the service
+        const storage = getStorage(app);
+
+        const storageRef = ref(storage)
+        const imageRef = ref(storage, 'foto_perfil.jpg');
+        const fileRef = ref(storage, 'foto_perfil/foto de perfil.jpg')
+
+
+
+        getDownloadURL(fileRef)
+        .then((url) => {
+            // `url` is the download URL for 'images/stars.jpg'
+
+            // This can be downloaded directly:
+            const xhr = new XMLHttpRequest();
+                xhr.responseType = 'blob';
+                xhr.onload = (event) => {
+                const blob = xhr.response;
+            };
+
+            xhr.open('GET', url);
+            xhr.send();
+
+            // Or inserted into an <img> element colocando a imagem em um elemento img
+            const img = document.getElementById('myimg');
+            img.setAttribute('src', url);
+        })
+        .catch((error) => {
+            // Handle any errors
+        });
+    </script>
+    <img src="" alt="" id="myimg">
+    <button>Subir arquivo</button>
+</body>
+</html>

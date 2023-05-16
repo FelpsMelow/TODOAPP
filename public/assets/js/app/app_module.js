@@ -410,6 +410,7 @@ onAuthStateChanged(auth, async (user) => { //Validando se o usuário está logad
         await get_app_info_categorias("drop")
         await get_app_info_categorias("list-user")
         await get_app_info_categorias("list-form")
+        await initialize_events_listeners()
 
     } else {
         window.location.href = "index.html"
@@ -613,3 +614,14 @@ filtro_categorias_drop.addEventListener("change", async () => {
 
 //Tela para a configuração do usuário
 
+
+const btn_user = document.querySelector(".btn-user")
+btn_user.addEventListener("click", async () => {
+
+    const app_crenn_lista_tarefas = document.querySelector(".container-list-e-forms")
+    const app_screen_user = document.querySelector(".app-screnn-user")
+ 
+    app_crenn_lista_tarefas.style.display =  "none";
+    app_screen_user.style.display =  "flex";
+    
+})
