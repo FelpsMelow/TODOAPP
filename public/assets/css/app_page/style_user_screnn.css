@@ -1,7 +1,9 @@
 .app-screnn-user {
-    display: none;
-    flex-direction: column;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .app-screnn-user h1 {
@@ -9,20 +11,57 @@
   text-align: center;
 }
 
+
 .app-screnn-user h2 {
   color: #333333;
   margin-bottom: 5px;
 }
 
-.app-screnn-user  div {
-  background-color: #b63636;
+.content-configs {
+  background-color: #d8d1d15e;
   padding: 20px;
+  height: 350px;
   margin-bottom: 30px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 
+.content-configs div {
+  height: 135px;
+  width: 120px;
+  border-radius: 3px;
+  border-style: dashed;
+  border-color: rgb(255, 255, 255);
+  border-width: 2px;
+  background-color: #706a6a93;
+  cursor: pointer;
+}
+
+.user-img {
+  display: none;
+  width: 120px;
+  border-radius: 10px;
+}
+
+.btn-salvar {
+  left: 50%;
+  cursor: pointer;
+  width: 140px;
+  height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  color: white;    
+  border: none;
+  cursor: pointer;
+  background-color: #11476ed7;
+  box-shadow: 0px 8px 15px -8px #05253ab7;
+}
+
+.btn-salvar:hover {
+  background-color: #0f619cb7;
+}

@@ -621,7 +621,26 @@ btn_user.addEventListener("click", async () => {
     const app_crenn_lista_tarefas = document.querySelector(".container-list-e-forms")
     const app_screen_user = document.querySelector(".app-screnn-user")
  
-    app_crenn_lista_tarefas.style.display =  "none";
-    app_screen_user.style.display =  "flex";
+
+
+    if (app_crenn_lista_tarefas.style.display == "none") {
+        app_crenn_lista_tarefas.style.display =  "flex";
+        app_screen_user.style.display =  "none";
+    } else {
+        app_crenn_lista_tarefas.style.display =  "none";
+        app_screen_user.style.display =  "flex";
+    }
+
+    //To do
+    //Ocultar o botão de nova tarefa e alinhar ele no centro do forms
+    //Fazer a mudança de tema
+    //Implementar o upload de arquivos
     
 })
+
+const input_file_img = document.getElementById("input_user_img")
+const start_input_file = document.querySelector(".recebe-img")
+start_input_file.addEventListener("click", async () => {
+    input_file_img.click() //Disparando o evento click no input file por meio do click na imagem do usuário
+})
+

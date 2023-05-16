@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="container-app">
-
+ 
 		<span class="erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não cadastrado !</span>
         <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Login inválido !</span>
         <span class="success"><img src="assets/imgs/alertas/sinal-de-ok.png" class="img-success" alt=""><i class="icon icon-hand-paper-o"></i>Categoria cadastrada !</span>
@@ -97,7 +97,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="container-list-e-forms">
+			<div class="container-list-e-forms" style="display: none;">
 				<div class="lista-tarefas">
 				</div>
 				<div class="container-form-nova-tarefa" style="display: none">
@@ -151,14 +151,15 @@
 				</div>
 			</div>
 			<div class="app-screnn-user">
-				<h1>Configuração de Usuário</h1>
+				<h1>Configurações de Usuário</h1>
 
   				<!-- Formulário para trocar a foto de perfil -->
 				<h2>Trocar a foto de perfil</h2>
-				<div>
-					<img src="caminho/para/foto-de-perfil-atual.jpg" alt="Foto de Perfil Atual">
-					<input type="file" name="profile-picture">
-					<button type="submit">Salvar</button>
+				<div class="content-configs">
+					<img src="assets/imgs/app_page/foto de perfil.jpg" class="user-img" alt="Foto de Perfil Atual">
+					<input type="file" name="profile-picture" id="input_user_img">
+					<div class="recebe-img"></div>
+					<button type="submit" class="btn-salvar">Salvar</button>
 				</div>
 			</div>
 			<button class="btn-nova-tarefa">NOVA TAREFA</button>
