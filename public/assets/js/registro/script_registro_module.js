@@ -2,23 +2,23 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
 
-import { getFirestore, collection, addDoc, getDoc, doc, onSnapshot} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"
 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-apiKey: "AIzaSyALQDf28nocTbr9e-QrzCX58xj64OdTIis",
-authDomain: "todolist-5e335.firebaseapp.com",
-projectId: "todolist-5e335",
-storageBucket: "todolist-5e335.appspot.com",
-messagingSenderId: "189298719165",
-appId: "1:189298719165:web:a60a2a6fb6d1176276bad4"
+    apiKey: "AIzaSyALQDf28nocTbr9e-QrzCX58xj64OdTIis",
+    authDomain: "todolist-5e335.firebaseapp.com",
+    projectId: "todolist-5e335",
+    storageBucket: "todolist-5e335.appspot.com",
+    messagingSenderId: "189298719165",
+    appId: "1:189298719165:web:a60a2a6fb6d1176276bad4"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);  // ------------------------------
 
-const btn_registro = document.querySelector(".btn-criar-conta")
+const submit_form = document.querySelector(".form-registro")
 
 function cadastrar_usuario(email) {
 
@@ -42,8 +42,6 @@ function cadastrar_usuario(email) {
 
         if (result.smtp_check == true) {
 
-            console.log("email valido, cadastrando")
-            
             const password = document.querySelector(".password").value
             const password_1 = document.querySelector(".password-confirm").value
 
@@ -54,19 +52,13 @@ function cadastrar_usuario(email) {
                 const auth = getAuth();
                 await createUserWithEmailAndPassword(auth, email, password)
                 .then( async (userCredential) => {
-                    // Signed in
+
                     const user = userCredential.user;
                     
-
                     if (user) {
-
-                        console.log(user)
 
                         const nome = document.querySelector(".nome").value
                         const sobrenome = document.querySelector(".sobrenome").value
-
-                        console.log(nome)
-                        console.log(sobrenome)
 
                         const db = getFirestore(app) //Configurando o fire store
 
@@ -81,7 +73,7 @@ function cadastrar_usuario(email) {
 
                             loader.style.display =  "none"
 
-                            window.location.href = "../index.html"
+                            window.location.href = "index.html"
                         }
 
                         catch (e) {
@@ -90,13 +82,12 @@ function cadastrar_usuario(email) {
 
                     }
 
-                    // ...
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
 
-                    console.log(errorCode)
+                    //console.log(errorCode)
 
                     if (errorCode == "auth/email-already-in-use") {
                         alert("O E-Mail informado já está em uso!")
@@ -108,7 +99,7 @@ function cadastrar_usuario(email) {
                         alert("Senha não atende os requisitos")
                         loader.style.display =  "none"
                     }
-                    // ..
+   
                 });
                 
             } if (status_password == true) {
@@ -118,8 +109,7 @@ function cadastrar_usuario(email) {
             }
 
 
-        }
-        else{
+        } else{
             alert("email invalido")
             loader.style.display =  "none"
             console.log("email invalido")
@@ -128,7 +118,7 @@ function cadastrar_usuario(email) {
     })
     .catch(error => {
         console.log(error.error)
-    }); //error.error > "no_email_address_spplied"
+    });
 
 }
 
@@ -142,11 +132,12 @@ function password_confirm(pass, pass_1) {
 }
 
 
-btn_registro.addEventListener("click", () => {
+submit_form.addEventListener("submit", (e) => {
+    e.preventDefault()
+
     const email = document.querySelector(".email").value
     cadastrar_usuario(email)
 
     const loader = document.querySelector(".loader-content")
     loader.style.display =  "flex"
-
 })

@@ -15,15 +15,22 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const btn_enviar = document.querySelector(".btn-redefinir-senha")
-btn_enviar.addEventListener("click", () => {
+const form_redefinir = document.querySelector(".form-redefinir")
+form_redefinir.addEventListener("submit", (e) => {
+
+    e.preventDefault()
 
     const email = document.querySelector(".email").value
     const auth = getAuth(app);
 
+    const loader = document.querySelector(".loader-content")
+    loader.style.display =  "flex"
+
+
+
     sendPasswordResetEmail(auth, email)
     .then(() => {
-        // Password reset email sent!
+        loader.style.display =  "none"
         alert("Email para redefinição de senha enviado!")
     })
     .catch((error) => {
@@ -34,23 +41,19 @@ btn_enviar.addEventListener("click", () => {
         console.log(errorMessage)
 
         if (errorCode == "auth/missing-email") {
-            //console.log("Preencha todos os campos")
-            //loader.style.display =  "none"
-
             document.querySelector(".warning").style.display =  "none"
             document.querySelector(".erro").style.display =  "flex"
+            loader.style.display =  "none"
 
         }
         if (errorCode == "auth/invalid-email") {
-            //console.log("Email ou senha incorreto!")
-            //loader.style.display =  "none"
-
             document.querySelector(".erro").style.display =  "none"
             document.querySelector(".warning").style.display =  "flex"
-        } if (errorCode == "auth/user-not-found") {
+            loader.style.display =  "none"
 
-            //loader.style.display =  "none"
+        } if (errorCode == "auth/user-not-found") {
             alert("Email não cadastrado neste app")
+            loader.style.display =  "none"
         }
     });
 })

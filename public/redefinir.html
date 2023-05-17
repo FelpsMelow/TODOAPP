@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/redefinir_page/style_redefinir.css">
     <link rel="stylesheet" href="assets/css/common/style_alertas.css">
+    <link rel="stylesheet" href="assets/css/common/style_spinner.css">
     <title>Redefinir senha</title>
 </head>
 <body>
@@ -20,17 +21,27 @@
         </div>
        
         <div class="right-container">
-            <form>
+            <form class="form-redefinir">
                 <h1>Recuperar senha</h1>
-                <p>Insira seu endereço de e-mail abaixo e enviaremos um link para redefinir sua senha.</p>
+                <p>Insira seu endereço de e-mail e enviaremos um link para redefinir sua senha.</p>
                 <label for="email">E-mail
                     <input type="email" id="email" class="email" name="email" placeholder="Seu e-mail">
                 </label>
-                <button type="button" class="btn-redefinir-senha">Enviar</button>
+                <button type="submit" class="btn-redefinir-senha">Enviar</button>
+                <p class="btn-cadastro-usuario">Ir para a página de
+                    <strong>
+                        <a href="index.html" class="btn-registro">login</a>
+                    </strong>
+                </p>
             </form>
         </div>
         
     </div>
+
+    <div class="loader-content">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
     <script type="module" src="assets/js/redefinir_senha/script_redefinir_senha_module.js"></script>
 </body>
 </html>

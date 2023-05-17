@@ -52,7 +52,7 @@ body * {
     align-items: center;
 }
 
-.card-login {
+.card-registro {
     width: 60%;
     height: 550px;
     display: flex;
@@ -64,7 +64,7 @@ body * {
     box-shadow: 0px 10px 40px #17407e;
 }
 
-.card-login > h1 {
+.card-registro > h1 {
     color: #ffffff;
     margin: 0;
 }
@@ -106,7 +106,7 @@ body * {
     line-height: 25px;
 }
 
-.container-termos > p > strong{
+.container-termos > p > strong > a{
     color: #ec7932;
     line-height: 25px;
 }
@@ -190,7 +190,7 @@ body * {
         display: none;
     }
     
-    .card-login {
+    .card-registro {
         width: 70%;
     }
 }
