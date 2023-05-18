@@ -53,7 +53,7 @@
 					<input type="text" placeholder="Categoria" id="nome_da_categoria" maxlength="19">
 
 					<label for="cor">Cor:</label>
-					<input type="color" id="cor_da_categoria" name="cor" required>
+					<input type="color" value="#fe6601" id="cor_da_categoria" name="cor" required>
 					
 					<button class="adicionar-categoria">SALVAR</button>
 				</div>
@@ -72,7 +72,7 @@
 			<div class="menu-bar">
 				<ul class="list-buttons">
 					<li>
-						<div class="categorie-color"></div>
+						<div class="categorie-color-filter"></div>
 						<select class="dropdown-categorias">
 							<option value="option1">Work</option>
 							<option value="option2">Opção aaaaaaaaa2</option>
@@ -99,9 +99,10 @@
 			</div>
 			<div class="container-list-e-forms">
 				<div class="lista-tarefas">
+					<!-- Carregando pelo js-->
 				</div>
 				<div class="container-form-nova-tarefa" style="display: none">
-					<form>
+					<form class="form-nova-tarefa">
 
 						<div>
 							<label for="titulo">Título:</label>
@@ -109,23 +110,18 @@
 						</div>
 					
 						<div>
-							<label for="cor">Cor:</label>
-							<input type="color" id="cor" name="cor" required>
-						</div>
-					
-						<div>
 							<label for="prioridade">Prioridade:</label>
-							<select id="prioridade" name="prioridade" required>
-								<option value="">Selecione...</option>
+							<select id="prioridade" name="prioridade">
+								<option>Selecione...</option>
 								<option value="alta">Alta</option>
-								<option value="media">Média</option>
+								<option value="media">Media</option>
 								<option value="baixa">Baixa</option>
 							</select>
 						</div>
 
 						<div>
 							<label for="descricao">Descrição:</label>
-							<textarea id="descricao" name="descricao" placeholder="Digite a descrição..." required></textarea>
+							<textarea id="descricao" name="descricao" placeholder="Digite a descrição..."></textarea>
 						</div>
 						
 						<div style="display: flex; flex-direction: column;" >
@@ -136,17 +132,11 @@
 						<div>
 							<label for="categoria">Categoria:</label>
 							<select id="categoria" class="categorias-input-form" name="prioridade" required>
-								<option value="">Selecione...</option>
-								<option value="alta">Trabalho</option>
-								<option value="media">Faculdade</option>
-								<option value="baixa">Lazer</option>
-								<option value="alta">Trabalho</option>
-								<option value="media">Faculdade</option>
-								<option value="baixa">Lazer</option>
+								<!--careegado pelo js-->
 							</select>	
 						</div>
 
-						<input type="button" value="Salvar" class="btn-cadastrar-tarefa">
+						<input type="submit" value="Salvar" class="btn-cadastrar-tarefa">
 					</form>
 				</div>
 			</div>

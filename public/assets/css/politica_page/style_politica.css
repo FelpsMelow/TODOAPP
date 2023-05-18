@@ -3,12 +3,14 @@ body {
     line-height: 1.5;
     color: #333;
     margin: 20px;
+    background-color: #f8f8f8b9;
 }
 
 h2 {
     color: #666;
     font-size: 24px;
     margin-bottom: 10px;
+    color: #112e59;
 }
 
 h3 {
@@ -16,6 +18,7 @@ h3 {
     font-size: 18px;
     margin-top: 20px;
     margin-bottom: 10px;
+    color: #f35f00;
 }
 
 p {
@@ -36,6 +39,7 @@ ul {
     margin-bottom: 10px;
     list-style-type: disc;
     margin-left: 20px;
+    color: #112e59;
 }
 
 li {
@@ -45,3 +49,4 @@ li {
 strong {
     font-weight: bold;
 }
+

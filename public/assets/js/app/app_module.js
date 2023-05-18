@@ -277,7 +277,6 @@ async function get_app_info_categorias (escopo) {
                 <li class="select-categoria" style="display:flex; flex-direction: row; justify-content: space-between; width: max-content;">
                     <div class="categorie-color" style="background-color: `+ categoria.Cor +`;"></div>
                     <strong class="nome-categoria">`+ categoria.Nome_categoria +`</strong>
-                    <img src="assets/imgs/app_page/icon-edit.png" style="width: 20px; margin-left: 10px">
                 </li>
             `
 
@@ -303,6 +302,19 @@ async function get_app_info_categorias (escopo) {
             
         });
 
+    } else if (escopo == "cor-categoria-filtro") {  //mudando a cor do card no filtro de categorias    (é mais facil criar uma função para subistituir a cor da categoria)
+
+        querySnapshot.forEach((doc) => {
+    
+            const cor_categoria_filtro = document.querySelector(".categorie-color-filter")
+
+            var categoria = doc.data()
+            var my_color = categoria.Cor
+            console.log(my_color)
+            cor_categoria_filtro.style.backgroundColor = my_color
+            return
+
+        });
     }
 
 }
@@ -402,20 +414,6 @@ async function initialize_events_listeners () {
         }
     }
 
-    {   //Eventos de escuta na lista de categorias
-        let categoria = document.querySelectorAll(".select-categoria");
-        console.log("qtde categoria " + categoria.length);
-
-        for (var k = 0; k < categoria.length; k++) { //Escuta para o botão de excluir o card
-    
-            categoria[k].addEventListener('click', async function(t) {
-                let nome_categoria  = t.currentTarget.querySelector('.nome-categoria').innerHTML;
-                console.log(nome_categoria)
-
-                await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", nome_categoria)
-            })
-        }
-    }
 }
       
 //Verificando status de login e iniciando a interface visual parra o usuário
@@ -492,8 +490,10 @@ async function cadastrar_tarefa (titulo, prioridade, desc, data_planejada, categ
 
 }
 
-const btn_cadastrar_tarefa = document.querySelector(".btn-cadastrar-tarefa")
-btn_cadastrar_tarefa.addEventListener("click",  async () => {
+const forms_nova_tarefa = document.querySelector(".form-nova-tarefa")
+forms_nova_tarefa.addEventListener("submit",  async (e) => {
+
+    e.preventDefault()
 
     var my_titulo = document.getElementById("titulo").value
     var my_prioridade = document.getElementById("prioridade").value
@@ -502,6 +502,8 @@ btn_cadastrar_tarefa.addEventListener("click",  async () => {
     var my_categoria = document.getElementById("categoria").value
 
     await cadastrar_tarefa(my_titulo, my_prioridade, my_desc, my_data_planejada, my_categoria)
+
+    forms_nova_tarefa.reset() //limpando os campos do forms
 })
 
 
@@ -609,14 +611,18 @@ onSnapshot(collection(db, "Tarefa"), async () => {
 
 //Encerrando login
 const btnLogout = document.querySelector(".btn-logout")
-btnLogout.addEventListener("click", ()=>{
+btnLogout.addEventListener("click", () => {
     const auth = getAuth();
-    signOut(auth).then(() => {
 
-    }).catch((error) => {
-        alert("Erro ao sair")
-    });
-    
+    var user_confirm = confirm("Realmente deseja sair?")
+
+    if (user_confirm == true) {
+        signOut(auth).then(() => {
+            //Usuário desconectado
+        }).catch((error) => {
+            alert("Erro ao sair")
+        });
+    } return
 })
 
 
@@ -628,6 +634,7 @@ filtro_categorias_drop.addEventListener("change", async () => {
     if (valor_selecionado != "Selecione") {
         await get_infos_app_tarefas(cuurrent_user_app(), "search", "categoria", valor_selecionado)
         await initialize_events_listeners()
+        //await get_app_info_categorias("cor-categoria-filtro")
     } else {
         await get_infos_app_tarefas(cuurrent_user_app(), "search", "todos", "")
     }
