@@ -86,3 +86,52 @@
   background-color: #0f619cb7;
   width: max-content;
 }
+
+
+/* ----- bi dousuário ----- */
+.content-bi-user {
+  background-color: #d8d1d15e;
+  height: 100%;
+  width: calc(65% - 20px);
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards-bi-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.card-user-bi {
+  height: 70px;
+  width: 30%;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  border: solid;
+  border-color: #ffffff18;
+  border-width: 1px;
+
+  box-shadow: 0px 10px 20px -8px #a19c95be;
+}
+
+.card-user-bi h1 {
+  color: #323536cc;
+}
+
+.card-user-bi h6 {
+  color: #323536;
+  font-size: 15px;
+}
