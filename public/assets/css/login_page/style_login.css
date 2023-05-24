@@ -199,12 +199,13 @@ body * {
     }
 }
 
-/* Estilo para telas menores que 768px */
-@media screen and (max-height: 412px) {
+/* Estilo para telas menores que 480px tela na horizontal*/
+@media screen and (max-height: 480px) {
     .card-login {
-        height: 360px;
+        height: min-content;
         min-width: 350px;
         border-radius: 10px;
+        padding: 20px;
     }
 
     .card-login p {
@@ -212,7 +213,22 @@ body * {
     }
 
     .textfield {
-        margin-bottom: 10px;
+        margin-bottom: 0px;
+    }
+
+    .textfield > input {
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .submit-form-login {
+        margin-top: 20px;
+    }
+
+    .btn-login {
+        border-radius: 5px;
+        padding: 10px;
+        height: min-content;
     }
 
     .btn-cadastro-usuario {
