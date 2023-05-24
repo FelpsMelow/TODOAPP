@@ -55,7 +55,7 @@ body * {
 .card-login {
     width: 60%;
     min-width: 275px;
-    height: 450px;
+    height: min-content;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -165,7 +165,7 @@ body * {
         display: flex;
         flex-direction: column;
         flex-wrap:nowrap;
-        justify-content: initial;
+        justify-content: space-around;
         width: 100vw;
         height: 100vh;
         padding: 5px;
@@ -183,6 +183,7 @@ body * {
 
     .right-login {
         width: 100%;
+        height: min-content;
         max-width: max-content;
         padding: 0;
         margin: 0;
@@ -194,5 +195,27 @@ body * {
     
     .card-login {
         width: 100%;
+        border-radius: 10px;
+    }
+}
+
+/* Estilo para telas menores que 768px */
+@media screen and (max-height: 412px) {
+    .card-login {
+        height: 360px;
+        min-width: 350px;
+        border-radius: 10px;
+    }
+
+    .card-login p {
+        display: none;
+    }
+
+    .textfield {
+        margin-bottom: 10px;
+    }
+
+    .btn-cadastro-usuario {
+        margin-bottom: 0;
     }
 }
