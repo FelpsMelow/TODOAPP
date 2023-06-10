@@ -1,0 +1,21 @@
+.light_mode:root {
+    /*Koopa Beach */
+    --body-bg: #fffffe;
+    --card-bg: #bae8e8;
+    --element-bg: #e3f6f5;
+    --custom-title-text-color: #ff9d00;
+    --custom-text-color: #272343;
+}
+
+:root {
+    /*Bowser's Castle*/
+    --body-bg: #16161a;
+    --body-text-color: #f7f7f0;
+    --body-text-shadow: #3d3b3b;
+    --element-bg: #2e53c4a8;
+    --element-box-shadow: #2b2b30;
+    --element-border-color: #6b5f5f3b;
+    --slider-bg: #2e53c4a8;
+    --card-bg: #343f53;
+    --custom-title-text-color: #7f5af0;
+}

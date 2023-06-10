@@ -1,9 +1,12 @@
+@import url('../common/style_color_themes.css');
+
+
 .lista-tarefas {
     width: 100%; /*Mudar com o click do botão ()nova tarefa > 70%*/  /*Corresponde aos 30% do container form*/
     height: 100%; 
     padding: 5px;
     padding-right: 5; /*Mudar com o click do botão (nova tarefa) > 0px */
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .card-tarefa {
@@ -14,7 +17,7 @@
     margin-bottom: 5px;
     display: flex;
     flex-direction: column;
-    background-color: #73767746;
+    background-color: var(--card-bg);
 }
 
 .container-resumo-tarefa {

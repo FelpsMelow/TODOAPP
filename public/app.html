@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="assets/css/app_page/style_form_nova_tarefa.css">
 	<link rel="stylesheet" href="assets/css/app_page/style_card.css">
 	<link rel="stylesheet" href="assets/css/app_page/style_user_screnn.css">
+	<link rel="stylesheet" href="assets/css/common/style_color_themes.css">
     <link rel="stylesheet" href="assets/css/common/style_spinner.css">
 	<link rel="stylesheet" href="assets/css/common/style_toggle_switch.css">
 	<link rel="stylesheet" href="assets/css/common/style_alertas.css">
@@ -15,6 +16,7 @@
 </head>
 <body>
 
+	<!--Não carregar esse script por hora-->
 	<script type="text/javascript" src="assets/js/app/responsividade_app.js"></script>
 
 	<div class="container-app">
@@ -24,32 +26,35 @@
         <span class="success"><img src="assets/imgs/alertas/sinal-de-ok.png" class="img-success" alt=""><i class="icon icon-hand-paper-o"></i>Categoria cadastrada !</span>
 
 
-		<div class="sidebar">
-			<div class="user-infos">
-				<img src="" alt="" id="foto_do_usuario">
+		<aside class="sidebar">
+			<section class="user-infos-section">
+				<img class="foto-do-usuario" src="" alt="" id="foto_do_usuario"> <!--Imagem carregada pelo JavaScript-->
 				<h2 class="user-name"></h2>
 				<div class="bi-user">
-					<div class="data-card">
-						<h1>4</h1>
-						<h6>To do</h6>
-					</div>
-					<div class="data-card">
-						<h1>1</h1>
-						<h6>Feito</h6>
-					</div>
-					<div class="data-card">
-						<h1>0</h1>
-						<h6>Atrasos</h6>
-					</div>
+					<ul>
+						<li class="data-card">
+							<h1>4</h1>
+							<h6>A fazer</h6>
+						</li>
+						<li class="data-card">
+							<h1>1</h1>
+							<h6>Feito</h6>
+						</li>
+						<li class="data-card">
+							<h1>0</h1>
+							<h6>Atrasados</h6>
+						</li>
+					</ul>
 				</div>
-			</div>
-			<div class="hr"></div>
+			</section>
 			<div class="categories">
-				<h2>Categorias
+				<h2>
+					Categorias
 					<img src="assets/imgs/app_page/btn_mais_categoria.png" alt="" class="img-btn-mais-categorias" style="display: block;">
 					<img src="assets/imgs/app_page/btn-fechar.png" alt="" class="img-btn-fechar-mais-categorias" style="display: none;">
 				</h2>
 				<ul class="categories-list">
+					<!--Itens carregados pelo JavaScript-->
 				</ul>
 				<div class="form-nova-categoria" style="display: none;">
 					</label>Digite o nome da categoria<label>
@@ -61,16 +66,15 @@
 					<button class="adicionar-categoria">SALVAR</button>
 				</div>
 			</div>
-			<div class="hr"></div>
 			<footer class="buttons-option">
 				<img src="assets/imgs/app_page/settings-icon.png" alt="imagem do usuário" class="btn-user">
 				<img src="assets/imgs/app_page/logout.png" alt="imagem do logout" class="btn-logout">
 				<label class="switch">
 					<input type="checkbox" checked>
 					<span class="slider round"></span>
-				  </label>
+				</label>
 			</footer>
-		</div>
+		</aside>
 		<div class="app-screnn">
 			<div class="menu-bar">
 				<ul class="list-buttons">

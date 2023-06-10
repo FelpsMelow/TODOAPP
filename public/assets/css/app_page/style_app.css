@@ -1,6 +1,10 @@
+@import url('../common/style_color_themes.css');
+
 body {
     margin: 0;
     overflow: hidden; /*usado para esconder as barras rolagem*/
+    background-color: var(--body-bg);
+    color: var(--body-text-color);
 }
 
 
@@ -8,9 +12,6 @@ body * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-* {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -19,92 +20,85 @@ body * {
     height: 100vh;
     display: flex;
     flex-direction: row;
-    background-color: white
 }
 
 .sidebar {
-    width: 20%;
+    width: 220px;
+    min-width: 220px;
     height: 100vh;
     border-right-style: solid;
+    border-color: var(--element-border-color);
     border-width: 2px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-color: #d8d1d17c;
-    padding-bottom: 10px;
 }
 
-.user-infos {
+.user-infos-section {
     width: 100%;
-    height: 45%;
-    background-color: white;
+    height: 380px;
+    min-height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px;
+    justify-content: space-between;
 }
 
-.user-infos img {
-    width: 50%;
-    border-radius: 10px;
-    box-shadow: 0px 10px 20px -2px #a19c95;
+.foto-do-usuario {
+    width: 140px;
+    margin-top: 10px;
+    border-radius: 70px;
+    box-shadow: 0px 10px 20px -2px var(--element-box-shadow);
 }
 
-.bi-user {
+.user-name {
+    text-shadow: var(--body-text-shadow) 0.1em 0.1em 0.1em;
+}
+
+.bi-user, .bi-user ul {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .data-card {
     height: 70px;
-    width: 30%;
+    width: 90px;
     border-radius: 10px;
+    margin-bottom: 15px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
     border: solid;
-    border-color: #a19c9518;
+    border-color: #57555318;
+    background-color: var(--element-bg);
     border-width: 1px;
-
-    box-shadow: 0px 10px 20px -8px #a19c95be;
+    box-shadow: 0px 10px 20px -8px var(--element-box-shadow);
 }
 
-.data-card h1 {
-    color: #323536cc;
-}
 
 .data-card h6 {
-    color: #323536;
     font-size: 15px;
 }
 
-.hr {
-    width: 100%;
-    height: 2px;
-    background-color: #d8d1d17c;
-}
+
 
 .categories {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-top: 0px;
     width: 100%;
-    height: 35%;
-    color: #222324e5;
+    height: calc(100% - 434px); /*Considerando borda e tamanho dos elementos*/
+    border-top-style: solid;
+    border-color: var(--element-border-color);
+    border-width: 2px;
 }
 
 .categories h2 {
     position: sticky;
     top: 0;
-    height: 30px;
-    background-color:white;
-
+    height: 50px;
+    padding: 10px;
     /*Estilo mudado por causa do botão*/
     display: flex;
     flex-direction: row;
@@ -124,10 +118,14 @@ body * {
 
 .categories-list {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+.categories-list::-webkit-scrollbar {
+    display: none;
 }
 
 .categories-list li {
@@ -136,8 +134,7 @@ body * {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 20px;
-    color: #323536cc;
+    margin-top: 15px;
     cursor: pointer;
 }
 
@@ -145,9 +142,10 @@ body * {
     width: 40px;
     height: 100%;
     border-radius: 3px;
+    margin-left: 15px;
     margin-right: 15px;
     background-color: rgba(255, 121, 12, 0.877);
-    box-shadow: 0px 10px 20px -5px #a19c95cc;
+    box-shadow: 0px 10px 20px -5px var(--element-box-shadow);
 }
 
 .categorie-color-filter {
@@ -195,7 +193,7 @@ body * {
 /* tela do app */
 
 .app-screnn {
-    width: 80%;
+    width: calc(100% - 220px);
     height: 100vh;
     display: flex; /*Alterar para flex após a configuração da tela de usuário*/
     flex-direction: column;
@@ -209,14 +207,13 @@ body * {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: white;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom-style: solid;
     border-width: 2px;
-    border-color: #d8d1d17c;
+    border-color: var(--element-border-color);
 }
 
 .list-buttons {
@@ -307,7 +304,11 @@ body * {
 
 .buttons-option {
     width: 100%;
-    height: 8%;
+    min-height: 50px;
+    height: 50px;
+    border-top-style: solid;
+    border-color: var(--element-border-color);
+    border-width: 2px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
