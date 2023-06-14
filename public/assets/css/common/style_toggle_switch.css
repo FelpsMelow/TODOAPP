@@ -6,7 +6,7 @@
     width: 50px;
     height: 24px;
 }
-  
+
 .switch input { 
     opacity: 0;
     width: 0;
@@ -20,7 +20,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--slider-disabled-bg);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -38,7 +38,7 @@
 }
 
 input:checked + .slider {
-    background-color: var(--slider-bg);
+    background-color: var(--slider-ativate-bg);
 }
 
 input:focus + .slider {

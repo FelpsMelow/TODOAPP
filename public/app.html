@@ -4,11 +4,16 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<link rel="stylesheet" href="assets/css/app_page/style_app.css">
+	<link rel="stylesheet" href="assets/css/app_page/responsive_styles/style_responsive_app.css"> <!--Carregando renponsividade-->
 	<link rel="stylesheet" href="assets/css/app_page/style_form_nova_tarefa.css">
+	
+	<link rel="stylesheet" href="assets/css/app_page/responsive_styles/style_responsive_filter_menu.css">
+
 	<link rel="stylesheet" href="assets/css/app_page/style_card.css">
 	<link rel="stylesheet" href="assets/css/app_page/style_user_screnn.css">
-	<link rel="stylesheet" href="assets/css/common/style_color_themes.css">
+
     <link rel="stylesheet" href="assets/css/common/style_spinner.css">
 	<link rel="stylesheet" href="assets/css/common/style_toggle_switch.css">
 	<link rel="stylesheet" href="assets/css/common/style_alertas.css">
@@ -16,18 +21,16 @@
 </head>
 <body>
 
-	<!--Não carregar esse script por hora-->
-	<script type="text/javascript" src="assets/js/app/responsividade_app.js"></script>
-
 	<div class="container-app">
- 
+		
 		<span class="erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não cadastrado !</span>
         <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Login inválido !</span>
         <span class="success"><img src="assets/imgs/alertas/sinal-de-ok.png" class="img-success" alt=""><i class="icon icon-hand-paper-o"></i>Categoria cadastrada !</span>
-
-
-		<aside class="sidebar">
+		
+		
+		<aside class="sidebar" id="sidebar">
 			<section class="user-infos-section">
+				<img class="btn-fechar-menu-sidebar" id="btn_fechar_menu_side_bar" src="assets/imgs/app_page/btn-fechar.png" alt="">
 				<img class="foto-do-usuario" src="" alt="" id="foto_do_usuario"> <!--Imagem carregada pelo JavaScript-->
 				<h2 class="user-name"></h2>
 				<div class="bi-user">
@@ -50,16 +53,16 @@
 			<div class="categories">
 				<h2>
 					Categorias
-					<img src="assets/imgs/app_page/btn_mais_categoria.png" alt="" class="img-btn-mais-categorias" style="display: block;">
+					<img src="assets/imgs/app_page/btn-mais-categoria.png" alt="" class="img-btn-mais-categorias" style="display: block;">
 					<img src="assets/imgs/app_page/btn-fechar.png" alt="" class="img-btn-fechar-mais-categorias" style="display: none;">
 				</h2>
 				<ul class="categories-list">
 					<!--Itens carregados pelo JavaScript-->
 				</ul>
 				<div class="form-nova-categoria" style="display: none;">
-					</label>Digite o nome da categoria<label>
+				</label>Digite o nome da categoria<label>
 					<input type="text" placeholder="Categoria" id="nome_da_categoria" maxlength="19">
-
+					
 					<label for="cor">Cor:</label>
 					<input type="color" value="#fe6601" id="cor_da_categoria" name="cor" required>
 					
@@ -76,85 +79,76 @@
 			</footer>
 		</aside>
 		<div class="app-screnn">
-			<div class="menu-bar">
+			<nav class="menu-bar">
 				<ul class="list-buttons">
-					<div>
-						<li class="menu-side-bar">
-							<img src="assets/imgs/app_page/btn-menu.png" alt="botão de menu" id="btn-menu">
-						</li>
-						<li>
-							<div class="categorie-color-filter"></div>
-							<select class="dropdown-categorias">
-								<option value="option1">Work</option>
-								<option value="option2">Opção aaaaaaaaa2</option>
-								<option value="option3">Opção 3</option>
-							</select>
-						</li>
-					</div>
-					<li class="container-list-buttons-filter">
-						<ul class="list-buttons-filter">
-							<li>
-								<button class="todos-cards">Todos</button>
-							</li>
-							<li>
-								<button class="cards-incompletos">Incompletos</button>
-							</li>
-							<li>
-								<button class="cards-feitos">Feitos</button>
-							</li>
-							<li>
-								<button class="cards-prioritarios">Prioritários</button>
-							</li>
-						</ul>
+					
+					<li class="menu-side-bar">
+						<img src="assets/imgs/app_page/btn-menu.png" alt="botão de menu" id="btn-menu">
 					</li>
+					<li class="categorie-filter">
+						<div class="categorie-color-card" id="categgorie_color_card"></div>
+						<select class="dropdown-categorias">
+							<option value="option1">Work</option>
+							<option value="option2">Opção aaaaaaaaa2</option>
+							<option value="option3">Opção 3</option>
+						</select>
+					</li>
+					
+					<li class="container-btn-filter">
+						<img class="btn-fiter" id="btn_filter_menu" src="assets/imgs/app_page/filter.png" alt="botão de filtro">
+					</li>
+					
+					<li class="filter-list-buttons">
+						<button class="todos-cards">Todos</button>
+						<button class="cards-incompletos">Incompletos</button>
+						<button class="cards-feitos">Feitos</button>
+						<button class="cards-prioritarios">Prioritários</button>
+					</li>
+					
 				</ul>
-			</div>
+			</nav>
 			<div class="container-list-e-forms">
 				<div class="lista-tarefas">
 					<!-- Carregando pelo js-->
 				</div>
 				<div class="container-form-nova-tarefa" style="display: none">
 					<form class="form-nova-tarefa">
-
-						<div>
-							<label for="titulo">Título:</label>
+						
+						<label for="titulo">Título:
+							
 							<input type="text" id="titulo" name="titulo" placeholder="Digite o título..." required>
-						</div>
-					
-						<div>
-							<label for="prioridade">Prioridade:</label>
+						</label>
+						
+						<label for="prioridade">Prioridade:
 							<select id="prioridade" name="prioridade">
 								<option>Selecione...</option>
 								<option value="alta">Alta</option>
 								<option value="media">Media</option>
 								<option value="baixa">Baixa</option>
 							</select>
-						</div>
-
-						<div>
-							<label for="descricao">Descrição:</label>
-							<textarea id="descricao" name="descricao" placeholder="Digite a descrição..."></textarea>
-						</div>
-						
-						<div style="display: flex; flex-direction: column;" >
-							<label for="data_planejada">Data planejada:</label>
-							<input type="date" id="data_planejada" name="data_planejada" required>
-						</div>
+						</label>
 					
-						<div>
-							<label for="categoria">Categoria:</label>
+						<label for="descricao">Descrição:
+							<textarea id="descricao" name="descricao" placeholder="Digite a descrição..."></textarea>
+						</label>
+						
+						<label for="data_planejada">Data planejada:
+							<input type="date" id="data_planejada" name="data_planejada" required>
+						</label>
+						
+						<label for="categoria">Categoria:
 							<select id="categoria" class="categorias-input-form" name="prioridade" required>
 								<!--careegado pelo js-->
 							</select>	
-						</div>
+						</label>
 
 						<input type="submit" value="Salvar" class="btn-cadastrar-tarefa">
 					</form>
 				</div>
 			</div>
 			<div class="app-screnn-user"> <!--Configuração do usuário-->
-
- 				<!-- Formulário para trocar a foto de perfil -->
+				
+				<!-- Formulário para trocar a foto de perfil -->
 				<div class="content-configs-foto-usuario">
 					<h2>Trocar a foto de perfil</h2>
 					<input type="file" name="profile-picture" id="input_user_img" accept="image/png, image/jpg" style="display: none;">
@@ -166,10 +160,40 @@
 			</div>
 			<button class="btn-nova-tarefa">NOVA TAREFA</button>
 		</div>
+		<aside class="right-responsive-filter" id="right_responsive_filter">
+
+			<nav class="responsive-menu-bar">
+
+				<img  class="btn-fechar-responsive-menu" id="btn_fechar_responsive_menu" src="assets/imgs/app_page/btn-fechar.png" alt="">
+
+				<ul class="responsive-list-buttons">
+					
+					<li class="responsive-categorie-filter">
+						<div class="categorie-color-card" id="categgorie_color_card"></div>
+						<select class="dropdown-categorias">
+							<option value="option1">Work</option>
+							<option value="option2">Opção aaaaaaaaa2</option>
+							<option value="option3">Opção 3</option>
+						</select>
+					</li>
+					
+					<li class="responsive-filter-list-buttons">
+						<button class="todos-cards">Todos</button>
+						<button class="cards-incompletos">Incompletos</button>
+						<button class="cards-feitos">Feitos</button>
+						<button class="cards-prioritarios">Prioritários</button>
+					</li>
+				</ul>
+			</nav>
+
+		</aside>
 	</div>
     <div class="loader-content">
-        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+		<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
 	<script type="module" src="assets/js/app/app_module.js"></script>
+
+	<!--Não carregar esse script por hora-->
+	<script type="text/javascript" src="assets/js/app/responsividade_app.js"></script>
 </body>
 </html>

@@ -1,0 +1,92 @@
+/* Estilo para telas menores que 768px */
+@media screen and (max-width: 768px) {
+    body {
+        overflow: hidden;
+    }
+    
+    .main-login {
+        display: flex;
+        flex-direction: column;
+        flex-wrap:nowrap;
+        width: 100vw;
+        height: 100vh;
+        padding: 5px;
+        overflow: hidden;
+
+    }
+        
+    .left-login {
+        width: 100%;
+        height: min-content;
+        max-width: max-content;
+        padding: 0;
+        margin-bottom: 50px;
+    }
+
+    .left-login-h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .right-login {
+        width: 100%;
+        height: min-content;
+        max-width: max-content;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .left-login-img {
+        display: none;
+    }
+    
+    .card-login {
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+/* Estilo para telas menores que 480px tela na horizontal*/
+@media screen and (max-height: 480px) {
+
+    .container_button_mode {
+        display: none;
+    }
+
+    .card-login {
+        height: min-content;
+        min-width: 350px;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .left-login-h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .btn-cadastro-usuario {
+        margin-top: 20px;
+    }
+
+    .textfield {
+        margin-bottom: 0px;
+    }
+
+    .textfield > input {
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .submit-form-login {
+        margin-top: 20px;
+    }
+
+    .btn-login {
+        border-radius: 5px;
+        padding: 10px;
+        height: min-content;
+    }
+
+    .btn-cadastro-usuario {
+        margin-bottom: 0;
+    }
+}

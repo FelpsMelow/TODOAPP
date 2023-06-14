@@ -8,14 +8,43 @@
 }
 
 :root {
-    /*Bowser's Castle*/
+    /*Fluxo do usuário*/
+    --fluxo-body-custom-text-color: #f35f00;
+    --fluxo-body-text-color: white;
+    --fluxo-text-shadow-color: #da6c28;
+    --linear-gradient-bg-left: #0e141b;
+    --linear-gradient-bg-right: #32363c;
+    --forms-bg: #485261;
+    --forms-box-shadow: #111111;
+    --forms-text-color: white;
+    --forms-input-bg: #e8f0fe;
+    --forms-input-box-shadow: #02032083;
+    --forms-btn-bg: #F35F00;
+    --forms-btn-box-shadow: #d16206d3;
+    --forms-btn-hover-bg: #f35d008a;
+    --link-color: #F35F00;
+    --link-color-hover: #f35d008a;
+
+    /*Alertas*/
+    --alert-success-bg: #021414;
+    --alert-warning-bg: #021414;
+    --alert-error-bg: #021414;
+
+    /*Slider*/
+    --slider-ativate-bg: #F35F00;
+    --slider-disabled-bg: #485261;
+
+
+    /*App*/
     --body-bg: #16161a;
     --body-text-color: #f7f7f0;
     --body-text-shadow: #3d3b3b;
+    --filter-menu-bg: #242e4b;
+    --btn-bg: #2d745c;
+    --btn-hover-bg: #3a8a6f;
     --element-bg: #2e53c4a8;
     --element-box-shadow: #2b2b30;
     --element-border-color: #6b5f5f3b;
-    --slider-bg: #2e53c4a8;
     --card-bg: #343f53;
     --custom-title-text-color: #7f5af0;
 }

@@ -1,0 +1,84 @@
+/* Estilo para telas menores que 768px */
+@media screen and (max-width: 950px) {
+    body {
+        overflow: auto;
+    }
+    
+    .main-registro {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        flex-direction: column;
+    }
+        
+    .left-registro {
+        width: 95%;
+        height: min-content;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .left-registro h1 {
+      font-size: 1.5rem;
+    }
+
+    .right-registro {
+        width: 100%;
+        height: max-content;
+    }
+
+
+    .card-registro > h1 {
+        font-size: 1.75rem;
+    }
+    
+    .left-registro-img {
+        display: none;
+    }
+    
+    .card-registro {
+        width: 70%;
+    }
+}
+
+@media screen and (max-height: 480px) {
+
+    .container_button_mode {
+        display: none;
+    }
+
+    .main-registro {
+        flex-direction: row;
+    }
+
+    .left-registro {
+        margin: 0;
+    }
+
+    .left-registro-img {
+        display: block;
+    }
+
+    .card-registro {
+        padding: 20px;
+    }
+
+    .card-registro h1{
+        display: none;
+    }
+
+    .submit-form-registro {
+        margin-top: 10px;
+    }
+
+    .textfield {
+        margin-top: 0px;
+        margin-bottom: 2px;
+    }
+
+    .textfield > input {
+        height: 40px;
+        border-radius: 5px;
+    }
+
+}

@@ -1,93 +1,32 @@
- /* Estilos básicos para o corpo da página */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;1,100;1,200&display=swap');
+@import url('../common/style_color_themes.css');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    margin: 0;
+    overflow: hidden;
+}
+
+body * {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--fluxo-body-text-color);
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-/* Estilos para o formulário */
-form {
-    width: 60%;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 30px 35px;
-    background-color: #13315e;
-    border-radius: 20px;
-    box-shadow: 0px 10px 40px #17407e;
-}
-
-form p {
-    width: 100%;
-}
-
-form h1, p {
-    color: white;
-}
-
-form p strong a {
-    text-decoration: none;
-    color: #F35F00;
-}
-
-/* Estilos para os campos de entrada */
-label {
-    width: 100%;
-    color: white;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-input[type="email"]{
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/* Estilos para o botão de enviar */
-button[type="submit"] {
-    width: 100%;
-    padding: 16px 0px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: #ffffff;
-    background-color: #F35F00;
-    cursor: pointer;
-    box-shadow: 0px 10px 20px -12px #854e07be;
-}
-
-button[type="submit"]:hover {
-    background-color: #f35d008a;
-}
-
-/* Estilos para a mensagem de erro */
-.error {
-    color: red;
-    margin-bottom: 20px;
-}
-
-/* Estilos para a mensagem de sucesso */
-.success {
-    color: green;
-    margin-bottom: 20px;
 }
 
 .main-redefinir{
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to right, #000428e1, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, var(--linear-gradient-bg-left), var(--linear-gradient-bg-right)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container_button_mode {
+    position: fixed !important;
+    right: 25px;
+    top: 25px;
 }
 
 .left-container {
@@ -101,7 +40,8 @@ button[type="submit"]:hover {
 
 .left-container > h1 {
     font-size: 2rem;
-    color: #F35F00;
+    color: var(--fluxo-body-custom-text-color);
+    text-shadow: var(--fluxo-text-shadow-color) 1px 1px 2px;
 }
 
 
@@ -116,4 +56,94 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form-redefinir {
+    width: 60%;
+    min-width: 350px;;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px 30px;
+    background-color: var(--forms-bg);
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px var(--forms-box-shadow);
+}
+
+.form-redefinir h1 {
+    margin: 0;
+}
+
+.form-redefinir p {
+    text-align: justify;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.form-redefinir p strong a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+.form-redefinir p strong a:hover {
+    text-decoration: none;
+    color: var(--link-color-hover);
+}
+
+/* Estilos para os campos de entrada */
+label {
+    width: 100%;
+    font-size: 16px;
+}
+
+input[type="email"]{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px var(--forms-input-box-shadow);
+    outline: none;
+    box-sizing: border-box;
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para o botão de enviar */
+button[type="submit"] {
+    width: 100%;
+    padding: 16px 0px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background-color: var(--forms-btn-bg);
+    cursor: pointer;
+    box-shadow: 0px 10px 20px -12px var(--forms-btn-box-shadow);
+}
+
+button[type="submit"]:hover {
+    background-color: var(--forms-btn-hover-bg);
+}
+
+.btn-cadastro-usuario {
+    margin-top: 20px;
+    padding: 0 !important;
+}
+
+/* Estilos para a mensagem de erro */
+.error {
+    color: red;
+    margin-bottom: 20px;
+}
+
+/* Estilos para a mensagem de sucesso */
+.success {
+    color: green;
+    margin-bottom: 20px;
 }

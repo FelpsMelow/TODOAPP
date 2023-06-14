@@ -1,0 +1,54 @@
+@import url('../../common/style_color_themes.css');
+
+@media screen and (max-width: 850px) { 
+    
+    /*Ocoultando a sidebar*/
+
+    .sidebar {
+        display: none;  /*alterarr para none com o JS*/
+        position: fixed;
+        left: 0;
+        background-color: var(--body-bg);
+    }
+
+    .btn-fechar-menu-sidebar {
+        display: block;
+        cursor: pointer;
+        position: fixed;
+        width: 40px;
+        top: 0;
+        left: 180px;
+    }
+
+    .app-screnn {
+        width: 100%;
+    }
+
+    .infos-tarefa h3 {
+        font-size: 0.8rem;
+    }
+
+    .menu-side-bar {
+        display: block !important;
+    }
+
+}
+
+@media screen and (max-width: 700px) { 
+    
+    /*Ocoultando botões da menubar*/
+
+    .categorie-filter {
+        display: none !important;
+    }
+
+    .filter-list-buttons {
+        display: none !important;
+    }
+
+    .btn-fiter{
+        display: block !important;
+        height: 40px;
+    }
+
+}

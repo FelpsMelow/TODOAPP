@@ -5,18 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/redefinir_page/style_redefinir.css">
+    <link rel="stylesheet" href="assets/css/redefinir_page/style_redefinir_responsive.css">
     <link rel="stylesheet" href="assets/css/common/style_alertas.css">
     <link rel="stylesheet" href="assets/css/common/style_spinner.css">
+    <link rel="stylesheet" href="assets/css/common/style_toggle_switch.css">
     <title>Redefinir senha</title>
 </head>
 <body>
-    <div class="main-redefinir">
+
+    <main class="main-redefinir">
+
+        <div class="container_button_mode">
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
+        </div>
 
         <span class="ms erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não informado !</span>
         <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Email inválido !</span>
 
         <div class=" left-container">
-            <h1 class="left-login-h1">Esqueceu a senha?<br>Podemos recupera-la!</h1>
+            <h1 class="left-container-h1">Esqueceu a senha?<br>Podemos recupera-la!</h1>
             <img src="assets/imgs/redefinir_page/redefinir_svg.svg" class="left-container-img" alt="animação da tela de login">
         </div>
        
@@ -36,7 +46,7 @@
             </form>
         </div>
         
-    </div>
+    </main>
 
     <div class="loader-content">
         <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>

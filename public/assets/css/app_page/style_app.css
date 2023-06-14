@@ -44,6 +44,10 @@ body * {
     justify-content: space-between;
 }
 
+.btn-fechar-menu-sidebar {
+    display: none;
+}
+
 .foto-do-usuario {
     width: 140px;
     margin-top: 10px;
@@ -148,15 +152,6 @@ body * {
     box-shadow: 0px 10px 20px -5px var(--element-box-shadow);
 }
 
-.categorie-color-filter {
-    width: 40px;
-    height: 100%;
-    border-radius: 3px;
-    margin-left: 15px;
-    margin-right: 5px;
-    background-color: #d9d9da;    box-shadow: 0px 10px 20px -5px #a19c95cc;
-}
-
 /*form nova categoria*/
 
 .form-nova-categoria {
@@ -202,18 +197,49 @@ body * {
 /* barra de menu do app */
 .menu-bar {
     width: 100%;
-    height: 10%;
+    padding: 10px;
+    height: 70px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    
+    /*Estilo de borda*/
     border-bottom-style: solid;
     border-width: 2px;
     border-color: var(--element-border-color);
+}
+
+.menu-side-bar {
+    display: none !important;
+    height: 40px;
+}
+
+.menu-side-bar img {
+    cursor: pointer;
+    width: 40px;
+}
+
+/*.categorie-filter*/
+
+.categorie-color-card {
+    height: 40px;
+    width: 20px;
+    border-radius: 3px;
+    margin-right: 5px;
+    background-color: #d9d9da;    box-shadow: 0px 10px 20px -5px #a19c95cc;
+}
+
+.dropdown-categorias {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    resize: none;
+    color: var(--body-text-color);
+    background-color: var(--element-bg);
 }
 
 .list-buttons {
@@ -221,74 +247,53 @@ body * {
     height: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-}
-
-.list-buttons div {
-    display: flex;
-    flex-direction: row;
 }
 
 .list-buttons li {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #222324e5;
 }
 
-.menu-side-bar {
-    width: 50px;
+.filter-list-buttons {
+    gap: 15px;
+    height: 40px;
+    
 }
 
-.menu-side-bar img {
+.filter-list-buttons button{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    width: 50px;
+    color: white;    
+    background-color: var(--element-bg);
+    box-shadow: 0px 8px 15px -8px #05253ab7;
+    
+}
+
+.list-buttons li button:hover {
+    background-color: var(--btn-hover-bg);
 }
 
 .list-buttons li select {
     margin: 0;
 }
 
-.list-buttons li div {
-    width: 20px;
-}
-
-.container-list-buttons-filter {
-    width: 50%;
-}
-
-.list-buttons-filter {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-
-.list-buttons-filter li button{
-    width: 100px;
-    height: 70%;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px;
-    color: white;    
-    border: none;
-    cursor: pointer;
-    background-color: #11476ed7;
-    box-shadow: 0px 8px 15px -8px #05253ab7;
-
-}
-
-.list-buttons-filter li button:hover {
-    background-color: #0f619cb7;
+.btn-fiter {
+    display: none !important;
+    height: 40px;
 }
 
 .container-list-e-forms {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 90%;
+    /*Levando a largura das bordas "2px" em conta*/
+    width: calc(100% - 2px);
+    height: calc(100% - 72px);
 }
 
 .container-form-nova-tarefa {

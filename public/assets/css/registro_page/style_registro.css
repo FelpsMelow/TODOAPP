@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;1,100;1,200&display=swap');
+@import url('../common/style_color_themes.css');
 
 body {
     margin: 0;
@@ -6,25 +7,28 @@ body {
 }
 
 body * {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--fluxo-body-text-color);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-* {
-    font-family: 'Poppins', sans-serif;
+.container_button_mode {
+    position: fixed !important;
+    right: 25px;
+    top: 25px;
 }
-
-.main-login{
+.main-registro{
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to right, #000428e1, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, var(--linear-gradient-bg-left), var(--linear-gradient-bg-right)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.left-login {
+.left-registro {
     width: 50vw;
     height: 90vh;
     display: flex;
@@ -33,18 +37,18 @@ body * {
     flex-direction: column;     /*Como foi usado o displey: flex, para forçarmos o alinhamento em coluna, colocamos o seguinte comando*/
 }
 
-.left-login > h1 {
+.left-registro > h1 {
     font-size: 2rem;
     color: #F35F00;
 }
 
 
-.left-login-img {
+.left-registro-img {
     width: 32vw;
     border: none;
 }
 
-.right-login {
+.right-registro {
     width: 50vw;
     height: 90vh;
     display: flex;
@@ -54,14 +58,16 @@ body * {
 
 .card-registro {
     width: 60%;
-    height: 550px;
+    min-width: 390px;
+    max-width: 530px;
+    height: max-content;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 30px 35px;
-    background-color: #13315e;
+    padding: 25px 30px;
+    background-color: #485261;
     border-radius: 20px;
-    box-shadow: 0px 10px 40px #17407e;
+    box-shadow: 0px 10px 40px var(--forms-box-shadow);
 }
 
 .card-registro > h1 {
@@ -118,6 +124,7 @@ body * {
     align-items: center;
     justify-content: space-around;
     margin-top: 25px;
+    gap: 10px;
 }
 
 
@@ -129,7 +136,7 @@ body * {
 }
 
 .btn-criar-conta {
-    width: 55%;
+    width: 50%;
     padding: 16px 0px;
     border: none;
     border-radius: 8px;
@@ -160,37 +167,4 @@ body * {
 .btn-cadastro-usuario, a {
     color: white;
     text-decoration: none;
-}
-
-
-
-/* Estilo para telas menores que 768px */
-@media screen and (max-width: 768px) {
-    body {
-        overflow: auto;
-    }
-    
-    .main-login {
-        width: 100vw;
-        height: 100vh;
-        padding: 0;
-        flex-direction: column;
-    }
-        
-    .left-login {
-        display: none;
-    }
-
-    .right-login {
-        width: 100%;
-        height: 50%;
-    }
-    
-    .left-login-img {
-        display: none;
-    }
-    
-    .card-registro {
-        width: 70%;
-    }
 }

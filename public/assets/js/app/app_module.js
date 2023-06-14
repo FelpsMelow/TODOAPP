@@ -370,10 +370,10 @@ async function initialize_events_listeners () {
                 
                 if(card_detalhe.style.display == 'none') {
                     card_detalhe.style.display =  "flex";
-                    card_tarefa.style.height = "150px"
+                    card_tarefa.style.height = "max-content"
                 }else {
                     card_detalhe.style.display =  "none";
-                    card_tarefa.style.height = "60px"
+                    card_tarefa.style.height = "max-content"
                 }
                 
             })

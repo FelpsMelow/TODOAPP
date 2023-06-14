@@ -1,73 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/registro_page/style_registro.css">
-    <link rel="stylesheet" href="assets/css/common/style_spinner.css">
-    <link rel="stylesheet" href="assets/css/common/style_alertas.css">
-
-    <title>Registro</title>
-</head>
-<body>
-    <div class="main-login">
-        <div class=" left-login">
-            <h1 class="left-login-h1">Crie uma conta gratis<br>E gerencie suas tarefas.</h1>
-            <img src="assets/imgs/registro_page/registro_svg.svg" class="left-login-img" alt="animação da tela de login">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/registro_page/style_registro.css">
+        <link rel="stylesheet" href="assets/css/registro_page/style_registro_responsive.css">
+        <link rel="stylesheet" href="assets/css/common/style_toggle_switch.css">
+        <link rel="stylesheet" href="assets/css/common/style_spinner.css">
+        <link rel="stylesheet" href="assets/css/common/style_alertas.css">
+        
+        <title>Registro</title>
+    </head>
+    <body>
+        <div class="container_button_mode">
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
         </div>
+
+        <span class="ms erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não cadastrado !</span>
+        <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Login inválido !</span>
        
-        <div class="right-login">
-            <form class="card-registro form-registro">
-                <h1>Criar conta grátis</h1>
-                <div class="container-input-nome" style="display: flex; flex-direction: row; width: 100%;">
-                    <div class="textfield" style="width: 60%; margin-right: 10%;">
-                        <label for="usuario">Nome</label>
-                        <input type="text" class="nome" placeholder="ex: Felipe">
-                    </div>
-                    <div class="textfield" style="width: 40%;">
-                        <label for="usuario">Sobrenome</label>
-                        <input type="text" class="sobrenome" placeholder="ex: Melo">
-                    </div>
-                </div>
-                <div class="textfield">
-                    <label for="usuario">Email</label>
-                    <input type="text" class="email" placeholder="Email">
-                </div>
-                <div class="container-input-nome" style="display: flex; flex-direction: row; width: 100%;">
-                    <div class="textfield" style="width: 48%; margin-right: 10%;">
-                        <label for="usuario">Senha</label>
-                        <input type="password" class="password">
-                    </div>
-                    <div class="textfield" style="width: 52%;">
-                        <label for="usuario">Confirme a senha</label>
-                        <input type="password" class="password-confirm">
-                    </div>
-                </div>
-                <div class="container-termos">
-                    <p>
-                        Ao criar uma conta, você declara que está de acordo com os
-                        <strong><a href="#">Termos de Uso</a></strong> & <strong><a href="politica.html" class="politica-privacidade">Política de Privacidade</a></strong>.
-                    </p>
-                </div>
-                <footer class="submit-form-registro">
-                    <input class="btn-criar-conta" type="submit" id="btn-criar-conta" value="Criar conta">
-                    <p class="btn-login-usuario">Ja possui conta?<br>
-                        <strong>
-                            <a href="index.html">Entre agora</a>
-                        </strong>
-                    </p>           
-                </footer>
-            </form>
-        </div>        
-    </div>
-    <div class="loader-content">
-        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    </div>
+        <main class="main-registro">
 
-    <span class="ms erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não cadastrado !</span>
-    <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Login inválido !</span>
+            <section class=" left-registro">
+                <h1 class="left-registro-h1">Crie uma conta gratis<br>E gerencie suas tarefas.</h1>
+                <img src="assets/imgs/registro_page/registro_svg.svg" class="left-registro-img" alt="animação da tela de login">
+            </section>
 
-    <script type="module" src="assets/js/registro/script_registro_module.js"></script>
-</body>
+            <section class="right-registro">
+                <form class="card-registro form-registro">
+                    <h1>Criar conta grátis</h1>
+                    <div class="container-input-nome" style="display: flex; flex-direction: row; width: 100%;">
+                        <div class="textfield" style="width: 60%; margin-right: 10%;">
+                            <label for="usuario">Nome</label>
+                            <input type="text" class="nome" placeholder="ex: Felipe">
+                        </div>
+                        <div class="textfield" style="width: 40%;">
+                            <label for="usuario">Sobrenome</label>
+                            <input type="text" class="sobrenome" placeholder="ex: Melo">
+                        </div>
+                    </div>
+                    <div class="textfield">
+                        <label for="usuario">Email</label>
+                        <input type="text" class="email" placeholder="Email">
+                    </div>
+                    <div class="container-input-nome" style="display: flex; flex-direction: row; width: 100%;">
+                        <div class="textfield" style="width: 48%; margin-right: 10%;">
+                            <label for="usuario">Senha</label>
+                            <input type="password" class="password">
+                        </div>
+                        <div class="textfield" style="width: 52%;">
+                            <label for="usuario">Confirmar senha</label>
+                            <input type="password" class="password-confirm">
+                        </div>
+                    </div>
+                    <div class="container-termos">
+                        <p>
+                            Ao prosseguir, você declara que está de acordo com os
+                            <strong><a href="#">Termos de Uso</a></strong> & <strong><a href="politica.html" class="politica-privacidade">Política de Privacidade</a></strong>.
+                        </p>
+                    </div>
+                    <footer class="submit-form-registro">
+                        <input class="btn-criar-conta" type="submit" id="btn-criar-conta" value="Criar conta">
+                        <p class="btn-login-usuario">Ja possui conta?<br>
+                            <strong>
+                                <a href="index.html">Entre agora</a>
+                            </strong>
+                        </p>           
+                    </footer>
+                </form>
+            </section> 
+
+        </main>
+
+        <div class="loader-content">
+            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+
+        <script type="module" src="assets/js/registro/script_registro_module.js"></script>
+
+    </body>
 </html>

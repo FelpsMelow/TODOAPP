@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/login_page/style_login.css">
+    <link rel="stylesheet" href="assets/css/login_page/style_login_responsive.css">
+    <link rel="stylesheet" href="assets/css/common/style_toggle_switch.css">
     <link rel="stylesheet" href="assets/css/common/style_alertas.css">
     <link rel="stylesheet" href="assets/css/common/style_spinner.css">
 
@@ -13,6 +15,13 @@
 <body>
     <script type="text/javascript" src="assets/js/login/responsividade_login.js"></script>
     <div class="main-login">
+
+        <div class="container_button_mode">
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
+        </div>
 
         <span class="ms erro"><img src="assets/imgs/alertas/sinal-de-erro.png" class="img-alerta" alt=""><i class="icon icon-hand-paper-o"></i>Email não cadastrado !</span>
         <span class="warning"><img src="assets/imgs/alertas/sinal-de-aviso.png" class="img-warning" alt=""><i class="icon icon-hand-paper-o"></i>Login inválido !</span>
@@ -27,11 +36,11 @@
             <form class="card-login" autocomplete="on">
                 <h1>Acesse sua conta</h1>
                 <div class="textfield">
-                    <label for="usuario">Email</label>
+                    <label for="usuario"><strong>Email</strong></label>
                     <input type="email" autocomplete="email" name="email" class="email" id="email" placeholder="Email">
                 </div>
                 <div class="textfield">
-                    <label for="Senha">Senha</label>
+                    <label for="Senha"><strong>Senha</strong></label>
                     <input type="password" autocomplete="current-password" name="password" class="password" id="password" placeholder="Senha">
                 </div>
                 <footer class="submit-form-login">

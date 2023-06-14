@@ -1,0 +1,38 @@
+/* Estilo para telas menores que 768px */
+@media screen and (max-width: 768px) {
+    
+    .main-redefinir {
+        display: flex;
+        flex-direction: column;
+        flex-wrap:nowrap;
+        padding: 5px;
+        overflow: hidden;
+
+    }
+        
+    .left-container {
+        width: 100%;
+        height: min-content;
+        max-width: max-content;
+        padding: 0;
+        margin-bottom: 50px;
+    }
+
+    .left-container-h1 {
+        font-size: 1.75rem !important;
+    }
+
+    .right-container {
+        width: 100%;
+        height: min-content;
+        max-width: max-content;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .left-container-img {
+        display: none;
+    }
+
+}
+

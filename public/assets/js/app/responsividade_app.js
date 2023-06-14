@@ -1,37 +1,30 @@
-{   //Funções de estilo
-    function estilo_app() {
-        const my_body_app = document.getElementsByTagName("body")
-        const side_bar = document.querySelector(".sidebar")
-        const app_screnn = document.querySelector(".app-screnn")
+{   //left responsive sidebar
 
-        let btn_menu = document.querySelector(".menu-side-bar")
+    const btn_menu_side_bar = document.getElementById('btn-menu')
+    btn_menu_side_bar.addEventListener('click', () => {
+        let side_bar = document.getElementById('sidebar')
+        side_bar.style.display = "flex"
+    })
 
-        if (my_body_app[0].offsetWidth <= 1200) {
-            //alert("menor que 1200")
-            btn_menu.style.display = "flex"
-            side_bar.style.display = "none"
-            app_screnn.style.width = "100%"
-        } else {
-            side_bar.style.display = "flex"
-            btn_menu.style.display = "none"
-            
-        }
-    }
+    const btn_fechar_menu_seidebar = document.getElementById('btn_fechar_menu_side_bar')
+    btn_fechar_menu_seidebar.addEventListener('click', () => {
+        let side_bar = document.getElementById('sidebar')
+        side_bar.style.display = "none"
+    })
+
 }
 
+ //right responsive menu
 
-
-window.addEventListener('DOMContentLoaded', ()=> {
-    //Eventos
-    const btn_menu_event = document.getElementById("btn-menu")
-    console.log(btn_menu_event)
-    btn_menu_event.addEventListener("click", ()=> {
-        alert("Botão apertado")
-    })
-    estilo_app()
+const btn_filter = document.getElementById('btn_filter_menu')
+btn_filter.addEventListener('click', () => {
+    let filter_menu = document.getElementById('right_responsive_filter')
+    filter_menu.style.display = "flex"
 })
 
+const btn_fechar_filter_menu = document.getElementById('btn_fechar_responsive_menu')
+btn_fechar_filter_menu.addEventListener('click', () => {
+    let filter_menu = document.getElementById('right_responsive_filter')
+    filter_menu.style.display = "none"
+})
 
-window.addEventListener('resize', function() {
-    estilo_app()
-});
