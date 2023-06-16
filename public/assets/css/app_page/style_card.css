@@ -49,7 +49,7 @@
 }
 
 .icones-img {
-    width: 130px;
+    max-width: 130px;
     height: 100%;
     display: flex;
     flex-direction: row;

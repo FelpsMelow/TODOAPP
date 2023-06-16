@@ -1,9 +1,54 @@
+@import url('../common/style_color_themes.css');
+
+main {
+    width: 85%;
+}
+
+.header {
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #485261;
+    box-shadow: 0 7px 20px RGBA(0,0,0,.15);
+}
+
+.container_button_mode {
+    margin-right: 30px;
+}
+
+.todolist_profile a{
+    height: 60px;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+    color: #f35f00;
+}
+
+.todolist_profile a h1 {
+    margin: 0;
+}
+
+.todolist_profile a img {
+    width: 35px;
+    margin-right: 20px;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
     color: #333;
-    margin: 20px;
-    background-color: #f8f8f8b9;
+    background-color: #717a882f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
 }
 
 h2 {
@@ -22,6 +67,7 @@ h3 {
 }
 
 p {
+    text-align: justify;
     margin-bottom: 10px;
 }
 
@@ -50,3 +96,14 @@ strong {
     font-weight: bold;
 }
 
+/* barra de rolagem */
+::-webkit-scrollbar-track {
+    background-color: #e2dfdfa2;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #a8a1a1;
+}

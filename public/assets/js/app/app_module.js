@@ -561,7 +561,7 @@ forms_nova_tarefa.addEventListener("submit",  async (e) => {
         btn_fechar.style.display =  "none";
         form_nova_categoria.style.display =  "none";
         btn_mais.style.display =  "block";
-        lista_categorias.style.display =  "block";
+        lista_categorias.style.display =  "flex";
 
         await initialize_events_listeners()
 
